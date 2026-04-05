@@ -219,10 +219,10 @@
     <div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div>
     <div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div>
     <div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div>
-    <input id="lockPw" type="password" placeholder="비밀번호 입력" 
+    <input id="lockPw" type="password" placeholder="비밀번호 입력"
       style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px"
       onkeypress="if(event.key==='Enter')checkPw()">
-    <button onclick="checkPw()" 
+    <button onclick="checkPw()"
       style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;font-family:'Pretendard';cursor:pointer">
       접속
     </button>
@@ -235,7 +235,7 @@ async function checkPw(){
   const enc=new TextEncoder();
   const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));
   const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex=== + password_hash + ){
+  if(hex==='9dd9aeda2e1089bcff803105d851f412796835081c492c6c7290bd6f5a904c92'){
     document.getElementById('lockScreen').style.display='none';
     sessionStorage.setItem('dash_auth','1');
   }else{
@@ -243,10 +243,7 @@ async function checkPw(){
     document.getElementById('lockPw').value='';
   }
 }
-// 세션 체크 (같은 탭에서 새로고침 시 재입력 안 하도록)
-if(sessionStorage.getItem('dash_auth')==='1'){
-  document.getElementById('lockScreen').style.display='none';
-}
+if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScreen').style.display='none';}
 </script>
 
 
@@ -281,27 +278,27 @@ if(sessionStorage.getItem('dash_auth')==='1'){
 <div class="kpi-grid">
   <div class="kpi-card blue">
     <div class="kpi-label">Sessions</div>
-    <div class="kpi-value">41회</div>
+    <div class="kpi-value">42회</div>
     <div class="kpi-sub neutral">GA4 기준</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">Users</div>
-    <div class="kpi-value">36명</div>
+    <div class="kpi-value">37명</div>
     <div class="kpi-sub neutral">신규 31명</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">Total Leads</div>
-    <div class="kpi-value">5건</div>
+    <div class="kpi-value">1건</div>
     <div class="kpi-sub neutral">Tally 폼 기준</div>
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">Page Views</div>
-    <div class="kpi-value">126회</div>
+    <div class="kpi-value">127회</div>
     <div class="kpi-sub neutral">전체 페이지뷰</div>
   </div>
   <div class="kpi-card red">
     <div class="kpi-label">Avg Duration</div>
-    <div class="kpi-value">577초</div>
+    <div class="kpi-value">564초</div>
     <div class="kpi-sub neutral">평균 세션 시간</div>
   </div>
 </div>
@@ -335,8 +332,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){
       <div class="channel-item">
         <div class="ch-left"><div class="ch-dot" style="background:var(--green)"></div><div class="ch-name">(not set)</div></div>
         <div class="ch-right">
-          <div class="ch-stat"><div class="ch-stat-value">21</div><div class="ch-stat-label">세션</div></div>
-          <div class="ch-stat"><div class="ch-stat-value">19</div><div class="ch-stat-label">사용자</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">22</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">20</div><div class="ch-stat-label">사용자</div></div>
         </div>
       </div>
       <div class="channel-item">
@@ -414,34 +411,6 @@ if(sessionStorage.getItem('dash_auth')==='1'){
       <thead><tr><th>이름</th><th>학년</th><th>센터</th><th>상태</th><th>일시</th></tr></thead>
       <tbody>
         <tr>
-          <td style="color:var(--text)">#○○○○</td>
-          <td>#REF!</td>
-          <td>#REF!</td>
-          <td><span class="badge-sm new">신규</span></td>
-          <td>#REF!</td>
-        </tr>
-        <tr>
-          <td style="color:var(--text)">#○○○○</td>
-          <td>#REF!</td>
-          <td>#REF!</td>
-          <td><span class="badge-sm new">신규</span></td>
-          <td>#REF!</td>
-        </tr>
-        <tr>
-          <td style="color:var(--text)">#○○○○</td>
-          <td>#REF!</td>
-          <td>#REF!</td>
-          <td><span class="badge-sm new">신규</span></td>
-          <td>#REF!</td>
-        </tr>
-        <tr>
-          <td style="color:var(--text)">#○○○○</td>
-          <td>#REF!</td>
-          <td>#REF!</td>
-          <td><span class="badge-sm new">신규</span></td>
-          <td>#REF!</td>
-        </tr>
-        <tr>
           <td style="color:var(--text)">이○○</td>
           <td>고1</td>
           <td>송도센터</td>
@@ -476,14 +445,14 @@ if(sessionStorage.getItem('dash_auth')==='1'){
           <td>스터디랩 소개</td>
           <td style="font-family:'Poppins';font-weight:600">31</td>
           <td>15</td>
-          <td>731초</td>
+          <td>733초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/</td>
           <td>홈 (메인)</td>
           <td style="font-family:'Poppins';font-weight:600">25</td>
-          <td>22</td>
-          <td>108초</td>
+          <td>23</td>
+          <td>103초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/49</td>
@@ -800,7 +769,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){
 </div>
 
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
-  <div class="kpi-card cyan"><div class="kpi-label">체험 신청</div><div class="kpi-value">5건</div><div class="kpi-sub neutral">Tally 폼 기준</div></div>
+  <div class="kpi-card cyan"><div class="kpi-label">체험 신청</div><div class="kpi-value">1건</div><div class="kpi-sub neutral">Tally 폼 기준</div></div>
   <div class="kpi-card green"><div class="kpi-label">SA 클릭</div><div class="kpi-value">—</div><div class="kpi-sub neutral">캠페인 시작 후 반영</div></div>
   <div class="kpi-card blue"><div class="kpi-label">광고비</div><div class="kpi-value">—</div><div class="kpi-sub neutral">SA 집행 후 반영</div></div>
   <div class="kpi-card red"><div class="kpi-label">CPC</div><div class="kpi-value">—</div><div class="kpi-sub neutral">캠페인 시작 후 산출</div></div>
@@ -924,8 +893,8 @@ function showNoData(canvasId, msg) {
 // ---- Daily Sessions Chart ----
 (function() {
   const labels = ["04/05", "04/04"];
-  const sessions = [33, 8];
-  const users = [28, 8];
+  const sessions = [34, 8];
+  const users = [29, 8];
   const canvas = document.getElementById('chartDailySessions');
   if (labels.length === 0) {
     showNoData('chartDailySessions', '일별 세션 데이터 수집 중');
@@ -947,7 +916,7 @@ function showNoData(canvasId, msg) {
 // ---- Device Chart ----
 (function() {
   const labels = ["mobile", "desktop"];
-  const values = [26, 15];
+  const values = [27, 15];
   const canvas = document.getElementById('chartDevices');
   if (labels.length === 0) {
     showNoData('chartDevices', '디바이스 데이터 수집 중');
@@ -970,7 +939,7 @@ function showNoData(canvasId, msg) {
 // ---- Hourly Sessions Chart ----
 (function() {
   const labels = ["0\uc2dc", "1\uc2dc", "2\uc2dc", "6\uc2dc", "7\uc2dc", "8\uc2dc", "10\uc2dc", "11\uc2dc", "12\uc2dc", "13\uc2dc", "16\uc2dc", "17\uc2dc", "18\uc2dc", "19\uc2dc", "20\uc2dc", "21\uc2dc", "22\uc2dc", "23\uc2dc"];
-  const values = [3, 4, 1, 2, 1, 1, 1, 6, 2, 3, 2, 1, 3, 2, 7, 2, 1, 1];
+  const values = [3, 4, 1, 2, 1, 1, 1, 6, 2, 3, 2, 1, 3, 2, 7, 2, 2, 1];
   const canvas = document.getElementById('chartHourlySessions');
   if (labels.length === 0) {
     showNoData('chartHourlySessions', '시간대별 데이터 수집 중');
@@ -1001,8 +970,8 @@ function showNoData(canvasId, msg) {
 
 // ---- Lead by Grade Chart ----
 (function() {
-  const labels = ["#REF!", "\uace01"];
-  const values = [4, 1];
+  const labels = ["\uace01"];
+  const values = [1];
   const canvas = document.getElementById('chartLeadGrade');
   if (labels.length === 0) {
     showNoData('chartLeadGrade', '리드 데이터 수집 중');
@@ -1025,8 +994,8 @@ function showNoData(canvasId, msg) {
 
 // ---- Consultation Type Chart ----
 (function() {
-  const labels = ["#REF!", "\uc804\ud654 \uc0c1\ub2f4"];
-  const values = [4, 1];
+  const labels = ["\uc804\ud654 \uc0c1\ub2f4"];
+  const values = [1];
   const canvas = document.getElementById('chartConsultType');
   if (labels.length === 0) {
     showNoData('chartConsultType', '상담 유형 데이터 수집 중');
@@ -1106,8 +1075,8 @@ function renderMediaCharts() {
 function renderStudylabCharts() {
   const ctx = document.getElementById('chartStudylabChannel');
   if (ctx._chart) return;
-  const labels = ["#REF!", "\uc804\ud654 \uc0c1\ub2f4"];
-  const values = [4, 1];
+  const labels = ["\uc804\ud654 \uc0c1\ub2f4"];
+  const values = [1];
   if (labels.length === 0) {
     showNoData('chartStudylabChannel', '상담 유형 데이터 수집 중');
     return;
