@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THAT'S ONE — Marketing Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Pretendard:wght@300;400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0d0d14;--bg2:#14141f;--bg3:#1a1a28;--bg4:#22222f;
+    --border:#2a2a3a;--border2:#333345;
+    --text:#e8e8f0;--text2:#9999aa;--text3:#666677;
+    --accent:#0191f1;--accent2:#10eeff;
+    --green:#00d68f;--red:#ff4d6a;--yellow:#ffc107;--purple:#7b61ff;
+    --orange:#ff8c42;
+  }
+  body{font-family:'Pretendard','Poppins',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+  /* Header */
+  .header{
+    background:var(--bg2);border-bottom:1px solid var(--border);
+    padding:16px 32px;display:flex;align-items:center;justify-content:space-between;
+    position:sticky;top:0;z-index:100;
+  }
+  .header-left{display:flex;align-items:center;gap:16px}
+  .header-logo{height:28px;opacity:0.9}
+  .header-divider{width:1px;height:24px;background:var(--border)}
+  .header-title{font-family:'Poppins';font-size:13px;font-weight:600;color:var(--text2);letter-spacing:2px}
+  .header-right{display:flex;align-items:center;gap:16px}
+  .header-date{font-size:12px;color:var(--text3)}
+  .header-status{
+    display:flex;align-items:center;gap:6px;
+    font-size:11px;color:var(--green);font-weight:600;
+  }
+  .header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
+
+  /* Main */
+  .main{padding:24px 32px;max-width:1400px;margin:0 auto}
+
+  /* Tab Navigation */
+  .tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--bg2);border-radius:8px;padding:4px;width:fit-content}
+  .tab{
+    padding:10px 24px;font-size:13px;font-weight:600;color:var(--text3);
+    cursor:pointer;border-radius:6px;transition:all 0.2s;user-select:none;
+  }
+  .tab:hover{color:var(--text2)}
+  .tab.active{background:var(--bg4);color:var(--accent2)}
+
+  /* KPI Cards */
+  .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:24px}
+  .kpi-card{
+    background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+    padding:20px 22px;position:relative;overflow:hidden;
+  }
+  .kpi-card::after{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  }
+  .kpi-card.blue::after{background:var(--accent)}
+  .kpi-card.cyan::after{background:var(--accent2)}
+  .kpi-card.green::after{background:var(--green)}
+  .kpi-card.red::after{background:var(--red)}
+  .kpi-card.purple::after{background:var(--purple)}
+  .kpi-label{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px}
+  .kpi-value{font-family:'Poppins';font-size:28px;font-weight:700;color:var(--text);letter-spacing:-1px}
+  .kpi-sub{display:flex;align-items:center;gap:4px;margin-top:6px;font-size:12px}
+  .kpi-sub.up{color:var(--green)}
+  .kpi-sub.down{color:var(--red)}
+  .kpi-sub.neutral{color:var(--text3)}
+
+  /* Section */
+  .section-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+  .section-grid.triple{grid-template-columns:1fr 1fr 1fr}
+  .section-grid.full{grid-template-columns:1fr}
+  .card{
+    background:var(--bg2);border:1px solid var(--border);border-radius:10px;
+    padding:22px;
+  }
+  .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .card-title{font-size:14px;font-weight:700;color:var(--text)}
+  .card-badge{
+    font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;
+    text-transform:uppercase;letter-spacing:0.5px;
+  }
+  .card-badge.consulting{background:rgba(1,145,241,0.15);color:var(--accent)}
+  .card-badge.studylab{background:rgba(16,238,255,0.15);color:var(--accent2)}
+  .card-badge.oneit{background:rgba(123,97,255,0.15);color:var(--purple)}
+  .card-badge.all{background:rgba(255,255,255,0.08);color:var(--text2)}
+
+  /* Funnel */
+  .funnel{display:flex;align-items:center;gap:8px;margin:8px 0}
+  .funnel-step{
+    flex:1;text-align:center;padding:14px 8px;
+    background:var(--bg3);border-radius:8px;position:relative;
+  }
+  .funnel-step .f-value{font-family:'Poppins';font-size:22px;font-weight:700}
+  .funnel-step .f-label{font-size:11px;color:var(--text3);margin-top:4px}
+  .funnel-arrow{color:var(--text3);font-size:16px;flex-shrink:0}
+  .funnel-rate{
+    font-size:10px;color:var(--accent2);font-weight:600;
+    position:absolute;top:-8px;right:-8px;
+    background:var(--bg2);padding:2px 6px;border-radius:8px;border:1px solid var(--border);
+  }
+
+  /* Gauge */
+  .gauge-container{display:flex;gap:24px;justify-content:center}
+  .gauge{text-align:center;flex:1}
+  .gauge-visual{
+    width:140px;height:140px;border-radius:50%;margin:0 auto 12px;
+    position:relative;display:flex;align-items:center;justify-content:center;
+  }
+  .gauge-visual .g-value{font-family:'Poppins';font-size:28px;font-weight:700}
+  .gauge-visual .g-unit{font-size:12px;color:var(--text3)}
+  .gauge-label{font-size:13px;font-weight:600;margin-bottom:4px}
+  .gauge-sub{font-size:11px;color:var(--text3)}
+
+  /* Channel List */
+  .channel-list{display:flex;flex-direction:column;gap:10px}
+  .channel-item{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 14px;background:var(--bg3);border-radius:8px;
+  }
+  .channel-item .ch-left{display:flex;align-items:center;gap:10px}
+  .channel-item .ch-dot{width:8px;height:8px;border-radius:50%}
+  .channel-item .ch-name{font-size:13px;font-weight:500}
+  .channel-item .ch-right{display:flex;gap:20px;align-items:center}
+  .channel-item .ch-stat{text-align:right}
+  .channel-item .ch-stat-value{font-family:'Poppins';font-size:14px;font-weight:600}
+  .channel-item .ch-stat-label{font-size:10px;color:var(--text3)}
+
+  /* Table */
+  .data-table{width:100%;border-collapse:collapse}
+  .data-table th{
+    font-size:11px;color:var(--text3);font-weight:600;text-align:left;
+    padding:10px 12px;border-bottom:1px solid var(--border);
+    text-transform:uppercase;letter-spacing:0.5px;
+  }
+  .data-table td{
+    font-size:13px;padding:10px 12px;border-bottom:1px solid var(--border);
+    color:var(--text2);
+  }
+  .data-table tr:hover td{background:var(--bg3)}
+  .badge-sm{
+    display:inline-block;font-size:10px;font-weight:600;
+    padding:2px 8px;border-radius:4px;
+  }
+  .badge-sm.new{background:rgba(0,214,143,0.15);color:var(--green)}
+  .badge-sm.contacted{background:rgba(1,145,241,0.15);color:var(--accent)}
+  .badge-sm.trial{background:rgba(16,238,255,0.15);color:var(--accent2)}
+  .badge-sm.converted{background:rgba(123,97,255,0.15);color:var(--purple)}
+  .badge-sm.lost{background:rgba(255,77,106,0.15);color:var(--red)}
+
+  /* Campaign Status */
+  .campaign-list{display:flex;flex-direction:column;gap:10px}
+  .campaign-item{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 14px;background:var(--bg3);border-radius:8px;
+  }
+  .campaign-item .cm-left{display:flex;align-items:center;gap:10px;flex:1}
+  .campaign-item .cm-status{width:8px;height:8px;border-radius:50%}
+  .campaign-item .cm-status.active{background:var(--green)}
+  .campaign-item .cm-status.planned{background:var(--yellow)}
+  .campaign-item .cm-status.paused{background:var(--text3)}
+  .campaign-item .cm-name{font-size:13px;font-weight:500}
+  .campaign-item .cm-channel{font-size:11px;color:var(--text3)}
+  .campaign-item .cm-right{display:flex;gap:16px;align-items:center}
+  .campaign-item .cm-metric{text-align:right}
+  .campaign-item .cm-metric-value{font-family:'Poppins';font-size:13px;font-weight:600}
+  .campaign-item .cm-metric-label{font-size:10px;color:var(--text3)}
+
+  /* Tab Content */
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+
+  /* Chart Container */
+  .chart-container{position:relative;height:220px}
+
+  /* Promo Banner */
+  .promo-banner{
+    background:linear-gradient(135deg,rgba(1,145,241,0.1),rgba(16,238,255,0.05));
+    border:1px solid rgba(16,238,255,0.2);border-radius:10px;
+    padding:16px 22px;display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:16px;
+  }
+  .promo-banner .pb-text{font-size:13px;color:var(--accent2);font-weight:500}
+  .promo-banner .pb-tag{
+    font-size:10px;background:rgba(16,238,255,0.15);color:var(--accent2);
+    padding:4px 10px;border-radius:4px;font-weight:600;
+  }
+
+  /* Placeholder card */
+  .placeholder-card{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:48px 24px;text-align:center;min-height:280px;
+  }
+  .placeholder-card .ph-icon{font-size:40px;margin-bottom:16px;opacity:0.3}
+  .placeholder-card .ph-title{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:8px}
+  .placeholder-card .ph-desc{font-size:12px;color:var(--text3);line-height:1.6}
+
+  /* Responsive */
+  @media(max-width:1024px){
+    .kpi-grid{grid-template-columns:repeat(3,1fr)}
+    .section-grid{grid-template-columns:1fr}
+    .section-grid.triple{grid-template-columns:1fr}
+  }
+  @media(max-width:768px){
+    .kpi-grid{grid-template-columns:1fr 1fr}
+    .main{padding:16px}
+    .header{padding:12px 16px}
+    .tabs{overflow-x:auto;width:100%}
+  }
+</style>
+</head>
+<body>
+<!-- Password Lock -->
+<div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d14;z-index:9999;display:flex;align-items:center;justify-content:center">
+  <div style="text-align:center;max-width:360px;padding:40px">
+    <div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div>
+    <div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div>
+    <div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div>
+    <input id="lockPw" type="password" placeholder="비밀번호 입력" 
+      style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px"
+      onkeypress="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()" 
+      style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;font-family:'Pretendard';cursor:pointer">
+      접속
+    </button>
+    <div style="margin-top:24px;font-size:11px;color:#333345">&copy; THAT'S ONE Marketing</div>
+  </div>
+</div>
+<script>
+async function checkPw(){
+  const pw=document.getElementById('lockPw').value;
+  const enc=new TextEncoder();
+  const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));
+  const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hex=== + password_hash + ){
+    document.getElementById('lockScreen').style.display='none';
+    sessionStorage.setItem('dash_auth','1');
+  }else{
+    document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다';
+    document.getElementById('lockPw').value='';
+  }
+}
+// 세션 체크 (같은 탭에서 새로고침 시 재입력 안 하도록)
+if(sessionStorage.getItem('dash_auth')==='1'){
+  document.getElementById('lockScreen').style.display='none';
+}
+</script>
+
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <img src="data:image/png;base64,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" class="header-logo" alt="THAT'S ONE">
+    <div class="header-divider"></div>
+    <div class="header-title">MARKETING DASHBOARD</div>
+  </div>
+  <div class="header-right">
+    <div class="header-date">2026. 04. 05 (일)</div>
+    <div class="header-status">LIVE</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('all')">전체</div>
+  <div class="tab" onclick="switchTab('media')">미디어</div>
+  <div class="tab" onclick="switchTab('consulting')">컨설팅랩</div>
+  <div class="tab" onclick="switchTab('studylab')">스터디랩</div>
+  <div class="tab" onclick="switchTab('oneit')">ONE-IT</div>
+</div>
+
+<!-- ==================== TAB: 전체 ==================== -->
+<div class="tab-content active" id="tab-all">
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="kpi-card blue">
+    <div class="kpi-label">Sessions</div>
+    <div class="kpi-value">41회</div>
+    <div class="kpi-sub neutral">GA4 기준</div>
+  </div>
+  <div class="kpi-card cyan">
+    <div class="kpi-label">Users</div>
+    <div class="kpi-value">36명</div>
+    <div class="kpi-sub neutral">신규 31명</div>
+  </div>
+  <div class="kpi-card green">
+    <div class="kpi-label">Total Leads</div>
+    <div class="kpi-value">5건</div>
+    <div class="kpi-sub neutral">Tally 폼 기준</div>
+  </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">Page Views</div>
+    <div class="kpi-value">126회</div>
+    <div class="kpi-sub neutral">전체 페이지뷰</div>
+  </div>
+  <div class="kpi-card red">
+    <div class="kpi-label">Avg Duration</div>
+    <div class="kpi-value">577초</div>
+    <div class="kpi-sub neutral">평균 세션 시간</div>
+  </div>
+</div>
+
+<!-- Charts Row -->
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">일별 세션 추이</div>
+      <div class="card-badge all">GA4</div>
+    </div>
+    <div class="chart-container"><canvas id="chartDailySessions"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">디바이스 분포</div>
+      <div class="card-badge all">GA4</div>
+    </div>
+    <div class="chart-container"><canvas id="chartDevices"></canvas></div>
+  </div>
+</div>
+
+<!-- Traffic Sources + Recent Leads -->
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">트래픽 소스</div>
+      <div class="card-badge all">GA4</div>
+    </div>
+    <div class="channel-list">
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--green)"></div><div class="ch-name">(not set)</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">21</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">19</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--accent)"></div><div class="ch-name">(direct) / (none)</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">16</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">14</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--accent2)"></div><div class="ch-name">m.search.naver.com / referral</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">6</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">5</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--yellow)"></div><div class="ch-name">kakao / opentalk</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">4</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">3</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--purple)"></div><div class="ch-name">google / organic</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">3</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">3</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--orange)"></div><div class="ch-name">m.place.naver.com / referral</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">2</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">2</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--green)"></div><div class="ch-name">chatgpt.com / referral</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--accent)"></div><div class="ch-name">naver / organic</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--accent2)"></div><div class="ch-name">naver.com / referral</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="ch-left"><div class="ch-dot" style="background:var(--yellow)"></div><div class="ch-name">pcmap.place.naver.com / referral</div></div>
+        <div class="ch-right">
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">1</div><div class="ch-stat-label">사용자</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">최근 리드</div>
+      <div class="card-badge all">Tally</div>
+    </div>
+    
+    <table class="data-table">
+      <thead><tr><th>이름</th><th>학년</th><th>센터</th><th>상태</th><th>일시</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text)">#○○○○</td>
+          <td>#REF!</td>
+          <td>#REF!</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>#REF!</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">#○○○○</td>
+          <td>#REF!</td>
+          <td>#REF!</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>#REF!</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">#○○○○</td>
+          <td>#REF!</td>
+          <td>#REF!</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>#REF!</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">#○○○○</td>
+          <td>#REF!</td>
+          <td>#REF!</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>#REF!</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">이○○</td>
+          <td>고1</td>
+          <td>송도센터</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>04.05 19:49</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Hourly Sessions + Top Pages -->
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">시간대별 세션</div>
+      <div class="card-badge all">GA4</div>
+    </div>
+    <div class="chart-container"><canvas id="chartHourlySessions"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">인기 페이지</div>
+      <div class="card-badge all">GA4</div>
+    </div>
+    
+    <table class="data-table">
+      <thead><tr><th>경로</th><th>페이지명</th><th>페이지뷰</th><th>세션</th><th>체류시간</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/36</td>
+          <td>스터디랩 소개</td>
+          <td style="font-family:'Poppins';font-weight:600">31</td>
+          <td>15</td>
+          <td>731초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/</td>
+          <td>홈 (메인)</td>
+          <td style="font-family:'Poppins';font-weight:600">25</td>
+          <td>22</td>
+          <td>108초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/49</td>
+          <td>컨설팅랩</td>
+          <td style="font-family:'Poppins';font-weight:600">10</td>
+          <td>6</td>
+          <td>68초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/main</td>
+          <td>홈 (메인)</td>
+          <td style="font-family:'Poppins';font-weight:600">8</td>
+          <td>5</td>
+          <td>458초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/26</td>
+          <td>댓츠원 소개</td>
+          <td style="font-family:'Poppins';font-weight:600">7</td>
+          <td>7</td>
+          <td>416초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/50</td>
+          <td>스터디랩</td>
+          <td style="font-family:'Poppins';font-weight:600">7</td>
+          <td>3</td>
+          <td>225초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/37</td>
+          <td>각 지점 소개</td>
+          <td style="font-family:'Poppins';font-weight:600">6</td>
+          <td>5</td>
+          <td>7초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/27</td>
+          <td>교수진 소개</td>
+          <td style="font-family:'Poppins';font-weight:600">5</td>
+          <td>5</td>
+          <td>182초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/40</td>
+          <td>AI ONE-IT</td>
+          <td style="font-family:'Poppins';font-weight:600">5</td>
+          <td>4</td>
+          <td>677초</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);font-family:monospace;font-size:12px">/about</td>
+          <td>댓츠원 컨설팅랩</td>
+          <td style="font-family:'Poppins';font-weight:600">5</td>
+          <td>5</td>
+          <td>10초</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Lead Breakdown -->
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">리드 — 학년별</div>
+      <div class="card-badge all">Sheets</div>
+    </div>
+    <div class="chart-container"><canvas id="chartLeadGrade"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">리드 — 상담 유형별</div>
+      <div class="card-badge all">Sheets</div>
+    </div>
+    <div class="chart-container"><canvas id="chartConsultType"></canvas></div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== TAB: 미디어 ==================== -->
+<div class="tab-content" id="tab-media">
+
+<!-- YouTube Section -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+  <div style="font-size:16px;font-weight:700;color:var(--red)">YouTube</div>
+  <div style="font-size:12px;color:var(--text3)">@thatsone1</div>
+</div>
+
+<div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
+  <div class="kpi-card red">
+    <div class="kpi-label">구독자</div>
+    <div class="kpi-value">33,600</div>
+    <div class="kpi-sub neutral">YouTube</div>
+  </div>
+  <div class="kpi-card blue">
+    <div class="kpi-label">총 조회수</div>
+    <div class="kpi-value">4,187,071</div>
+    <div class="kpi-sub neutral">165개 영상</div>
+  </div>
+  <div class="kpi-card cyan">
+    <div class="kpi-label">전체 평균뷰</div>
+    <div class="kpi-value">25,435</div>
+    <div class="kpi-sub neutral">참여율 1.11%</div>
+  </div>
+  <div class="kpi-card green">
+    <div class="kpi-label">최근 30일 평균</div>
+    <div class="kpi-value">9,126</div>
+    <div class="kpi-sub neutral">30개 &middot; 주 7.0개</div>
+  </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">이전 30일 평균</div>
+    <div class="kpi-value">17,958</div>
+    <div class="kpi-sub neutral">16개 업로드</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--red)">
+    <div class="kpi-label">성장률</div>
+    <div class="kpi-value" style="color:var(--red)">↓ 49.2%</div>
+    <div class="kpi-sub down">vs 이전 30일</div>
+  </div>
+</div>
+
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">월별 업로드 &amp; 평균 조회수</div>
+      <div class="card-badge all">YouTube</div>
+    </div>
+    <div class="chart-container"><canvas id="chartYtMonthly"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">조회수 분포</div>
+      <div class="card-badge all">165개</div>
+    </div>
+    <div class="chart-container"><canvas id="chartYtDist"></canvas></div>
+  </div>
+</div>
+
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">역대 Top 5 영상</div>
+      <div class="card-badge all">조회수 순</div>
+    </div>
+    
+    <table class="data-table">
+      <thead><tr><th>제목</th><th>조회수</th><th>참여율</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><a href="https://youtube.com/watch?v=iI3r3UATu2A" target="_blank" style="color:var(--accent2);text-decoration:none">합격 확률, 끝까지 끌어올립니다. [정시 원서 컨설팅]</a></td>
+          <td style="font-family:'Poppins';font-weight:600">232,227</td>
+          <td>0.07%</td>
+        </tr>
+        <tr>
+          <td><a href="https://youtube.com/watch?v=-xZXzz1ja_A" target="_blank" style="color:var(--accent2);text-decoration:none">[2026 정시] 진학사 4칸·3칸·2칸 왜 합격하는가? 비밀 매커니즘 ...</a></td>
+          <td style="font-family:'Poppins';font-weight:600">209,073</td>
+          <td>1.79%</td>
+        </tr>
+        <tr>
+          <td><a href="https://youtube.com/watch?v=eSZXGDYCA9w" target="_blank" style="color:var(--accent2);text-decoration:none">대치동 면접 노하우 전부 풀겠습니다 | AI 면접 솔루션, ONE-IT</a></td>
+          <td style="font-family:'Poppins';font-weight:600">173,970</td>
+          <td>0.05%</td>
+        </tr>
+        <tr>
+          <td><a href="https://youtube.com/watch?v=rgdfKjt_tZs" target="_blank" style="color:var(--accent2);text-decoration:none">올해 펑크 대학 예측! 3·4·5등급을 위한 신의 한수</a></td>
+          <td style="font-family:'Poppins';font-weight:600">172,711</td>
+          <td>2.12%</td>
+        </tr>
+        <tr>
+          <td><a href="https://youtube.com/watch?v=PovWwHTW8js" target="_blank" style="color:var(--accent2);text-decoration:none">2026 윈터스쿨 모집｜선착순 마감 임박! 8주 만에 만드는 합격 루틴!</a></td>
+          <td style="font-family:'Poppins';font-weight:600">167,864</td>
+          <td>0.02%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">최근 영상</div>
+      <div class="card-badge all">최근 8개</div>
+    </div>
+    
+    <table class="data-table">
+      <thead><tr><th>날짜</th><th>제목</th><th>조회수</th><th>좋아요</th><th>참여율</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text)">2026-04-04</td>
+          <td><a href="https://youtube.com/watch?v=jQ14qgkhK08" target="_blank" style="color:var(--accent2);text-decoration:none">고1 한국사·통합사회 벼락치기, 이 방법이면 1주일 만에 점수 바뀝니다</a></td>
+          <td style="font-family:'Poppins';font-weight:600">9,222</td>
+          <td>425</td>
+          <td>4.88%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-04-03</td>
+          <td><a href="https://youtube.com/watch?v=W08Q7tGIV5o" target="_blank" style="color:var(--accent2);text-decoration:none">내신 망해도 수시로 '인서울' 진짜 가능합니다 (구체적인 방법 알려드림)</a></td>
+          <td style="font-family:'Poppins';font-weight:600">2,590</td>
+          <td>27</td>
+          <td>1.04%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-04-03</td>
+          <td><a href="https://youtube.com/watch?v=vNVMVnB0cZQ" target="_blank" style="color:var(--accent2);text-decoration:none">간호학과, 내신 5등급도 합격 가능한 지원 전략!</a></td>
+          <td style="font-family:'Poppins';font-weight:600">2,847</td>
+          <td>14</td>
+          <td>0.53%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-04-01</td>
+          <td><a href="https://youtube.com/watch?v=Su4KKUpjTts" target="_blank" style="color:var(--accent2);text-decoration:none">비문학 독서 지문, 쉽게 공부하는 법은 따로 있습니다!</a></td>
+          <td style="font-family:'Poppins';font-weight:600">4,252</td>
+          <td>29</td>
+          <td>0.68%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-04-01</td>
+          <td><a href="https://youtube.com/watch?v=OZsxqtq1kJw" target="_blank" style="color:var(--accent2);text-decoration:none">태블릿PC로 공부하면 절대 안되는 이유 (팩폭주의)</a></td>
+          <td style="font-family:'Poppins';font-weight:600">5,250</td>
+          <td>49</td>
+          <td>0.93%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-04-01</td>
+          <td><a href="https://youtube.com/watch?v=vJLR7Ulr-Xc" target="_blank" style="color:var(--accent2);text-decoration:none">내신 4~5등급, 아직 역전 가능한 입시 전략</a></td>
+          <td style="font-family:'Poppins';font-weight:600">7,774</td>
+          <td>42</td>
+          <td>0.64%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-03-30</td>
+          <td><a href="https://youtube.com/watch?v=ld7Twio7fCM" target="_blank" style="color:var(--accent2);text-decoration:none">시험범위 밖 문제? AI로 미리 뽑아서 대비하세요</a></td>
+          <td style="font-family:'Poppins';font-weight:600">3,961</td>
+          <td>38</td>
+          <td>0.96%</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2026-03-30</td>
+          <td><a href="https://youtube.com/watch?v=t6rSH1AgAMk" target="_blank" style="color:var(--accent2);text-decoration:none">고1 첫 중간고사, 수학 성적 무조건 올리는 방법!</a></td>
+          <td style="font-family:'Poppins';font-weight:600">7,290</td>
+          <td>82</td>
+          <td>1.14%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Blog Section -->
+<div style="display:flex;align-items:center;gap:8px;margin:24px 0 16px">
+  <div style="font-size:16px;font-weight:700;color:var(--green)">Blog</div>
+  <div style="font-size:12px;color:var(--text3)">thatsone_studylab</div>
+</div>
+
+<div class="section-grid full">
+  <div class="card">
+    <div class="placeholder-card">
+      <div class="ph-icon">&#128221;</div>
+      <div class="ph-title">네이버 블로그 연동 예정</div>
+      <div class="ph-desc">
+        네이버 블로그는 통계 API를 제공하지 않아 직접 연동이 불가합니다.<br>
+        현재 GA4 UTM으로 블로그 &rarr; 사이트 유입을 추적 중입니다.<br><br>
+        <span style="color:var(--green)">추적 중:</span> 블로그 유입 세션 (GA4 source=naver, medium=blog)<br>
+        <span style="color:var(--green)">발행 현황:</span> 공식 블로그 6개 글 (thatsone_studylab)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram Section -->
+<div style="display:flex;align-items:center;gap:8px;margin:24px 0 16px">
+  <div style="font-size:16px;font-weight:700;color:var(--purple)">Instagram</div>
+  <div style="font-size:12px;color:var(--text3)">@thatsone_official</div>
+</div>
+
+<div class="section-grid full">
+  <div class="card">
+    <div class="placeholder-card">
+      <div class="ph-icon">&#128247;</div>
+      <div class="ph-title">인스타그램 연동 예정</div>
+      <div class="ph-desc">
+        Meta Graph API 연동 후 팔로워, 도달, 참여율 데이터가 표시됩니다.<br><br>
+        <span style="color:var(--purple)">필요:</span> 비즈니스 계정 전환 + Meta 앱 토큰 발급
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ==================== TAB: 컨설팅랩 ==================== -->
+<div class="tab-content" id="tab-consulting">
+<div class="section-grid full">
+  <div class="card">
+    <div class="placeholder-card">
+      <div class="ph-icon">&#128202;</div>
+      <div class="ph-title">컨설팅 CRM 연동 후 활성화</div>
+      <div class="ph-desc">
+        컨설팅랩 전용 CRM이 구축되면 상담 리드, 계약 전환율,<br>
+        기여 매출, 채널별 CPA 등의 실시간 데이터가 이 탭에 표시됩니다.<br><br>
+        <span style="color:var(--accent)">예정 항목:</span> 상담 퍼널 · 월간 매출 추이 · 채널별 CPA · 전환율 분석
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== TAB: 스터디랩 ==================== -->
+<div class="tab-content" id="tab-studylab">
+
+<div class="promo-banner">
+  <div class="pb-text">4월 프로모션 진행 중 — 1주일 무료 체험 &middot; 3개월 10% &middot; 5개월 15% 할인</div>
+  <div class="pb-tag">ACTIVE</div>
+</div>
+
+<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+  <div class="kpi-card cyan"><div class="kpi-label">체험 신청</div><div class="kpi-value">5건</div><div class="kpi-sub neutral">Tally 폼 기준</div></div>
+  <div class="kpi-card green"><div class="kpi-label">SA 클릭</div><div class="kpi-value">—</div><div class="kpi-sub neutral">캠페인 시작 후 반영</div></div>
+  <div class="kpi-card blue"><div class="kpi-label">광고비</div><div class="kpi-value">—</div><div class="kpi-sub neutral">SA 집행 후 반영</div></div>
+  <div class="kpi-card red"><div class="kpi-label">CPC</div><div class="kpi-value">—</div><div class="kpi-sub neutral">캠페인 시작 후 산출</div></div>
+</div>
+
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header"><div class="card-title">좌석 현황</div><div class="card-badge studylab">수동 업데이트</div></div>
+    <div class="gauge-container">
+      <div class="gauge">
+        <div class="gauge-visual" style="background:conic-gradient(var(--accent2) 0% 11%, var(--bg3) 11% 100%)">
+          <div><div class="g-value" style="color:var(--accent2)">6</div><div class="g-unit">/56석</div></div>
+        </div>
+        <div class="gauge-label">대치센터</div>
+        <div class="gauge-sub">잔여 50석 &middot; 공석률 89%</div>
+      </div>
+      <div class="gauge">
+        <div class="gauge-visual" style="background:conic-gradient(var(--accent) 0% 0%, var(--bg3) 0% 100%)">
+          <div><div class="g-value" style="color:var(--accent)">~0</div><div class="g-unit">/100석+</div></div>
+        </div>
+        <div class="gauge-label">송도센터</div>
+        <div class="gauge-sub">잔여 100석+ &middot; 신규 오픈</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">체험 신청 리드</div><div class="card-badge studylab">Tally</div></div>
+    
+    <table class="data-table">
+      <thead><tr><th>이름</th><th>학년</th><th>상담유형</th><th>상태</th><th>일시</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text)">이○○</td>
+          <td>고1</td>
+          <td>전화 상담</td>
+          <td><span class="badge-sm new">신규</span></td>
+          <td>04.05 19:49</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section-grid">
+  <div class="card">
+    <div class="card-header"><div class="card-title">상담 유형 분포</div></div>
+    <div class="chart-container"><canvas id="chartStudylabChannel"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">캠페인 현황</div><div class="card-badge studylab">SA + 수동</div></div>
+    <div class="campaign-list">
+      <div class="campaign-item">
+        <div class="cm-left"><div class="cm-status active"></div><div><div class="cm-name">플레이스 광고 (대치)</div><div class="cm-channel">네이버 플레이스 · 일 3만</div></div></div>
+        <div class="cm-right"><div class="cm-metric"><div class="cm-metric-value">—</div><div class="cm-metric-label">수동 추적</div></div></div>
+      </div>
+      <div class="campaign-item">
+        <div class="cm-left"><div class="cm-status active"></div><div><div class="cm-name">플레이스 광고 (송도)</div><div class="cm-channel">네이버 플레이스 · 일 3만</div></div></div>
+        <div class="cm-right"><div class="cm-metric"><div class="cm-metric-value">—</div><div class="cm-metric-label">수동 추적</div></div></div>
+      </div>
+      <div class="campaign-item">
+        <div class="cm-left"><div class="cm-status active"></div><div><div class="cm-name">오픈톡방 4월 메시지</div><div class="cm-channel">카카오 · 2,000명</div></div></div>
+        <div class="cm-right"><div class="cm-metric"><div class="cm-metric-value">—</div><div class="cm-metric-label">수동 추적</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== TAB: ONE-IT ==================== -->
+<div class="tab-content" id="tab-oneit">
+<div class="section-grid full">
+  <div class="card">
+    <div class="placeholder-card">
+      <div class="ph-icon">&#129302;</div>
+      <div class="ph-title">ONE-IT 로칭 후 활성화</div>
+      <div class="ph-desc">
+        ONE-IT AI 플랫폼이 퍼블릭 로칭되면 베타 유저, DAU,<br>
+        가입 전환율, MRR 등의 실시간 데이터가 이 탭에 표시됩니다.<br><br>
+        <span style="color:var(--purple)">현재 상태:</span> 베타 운영 중 (osr.1one-it.com)<br>
+        <span style="color:var(--purple)">예정 항목:</span> 유저 가입 추이 &middot; 리텐션 &middot; MRR &middot; 로칭 로드맵
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+// Tab switching
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'media') renderMediaCharts();
+  if (tab === 'studylab') renderStudylabCharts();
+}
+
+// Chart defaults
+Chart.defaults.color = '#999';
+Chart.defaults.borderColor = '#2a2a3a';
+Chart.defaults.font.family = "'Poppins','Pretendard'";
+Chart.defaults.font.size = 11;
+
+// No data helper
+
+function showNoData(canvasId, msg) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  ctx.save();
+  ctx.fillStyle = '#666677';
+  ctx.font = '13px Pretendard, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(msg || '데이터 수집 중', canvas.width / 2, canvas.height / 2);
+  ctx.restore();
+}
+
+
+// ---- Daily Sessions Chart ----
+(function() {
+  const labels = ["04/05", "04/04"];
+  const sessions = [33, 8];
+  const users = [28, 8];
+  const canvas = document.getElementById('chartDailySessions');
+  if (labels.length === 0) {
+    showNoData('chartDailySessions', '일별 세션 데이터 수집 중');
+    return;
+  }
+  new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {label:'세션',data:sessions,borderColor:'#0191f1',backgroundColor:'rgba(1,145,241,0.1)',tension:0.4,fill:true,pointRadius:3},
+        {label:'사용자',data:users,borderColor:'#10eeff',backgroundColor:'rgba(16,238,255,0.1)',tension:0.4,fill:true,pointRadius:3}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:16}}},scales:{y:{beginAtZero:true,grid:{color:'#1f1f2f'}}}}
+  });
+})();
+
+// ---- Device Chart ----
+(function() {
+  const labels = ["mobile", "desktop"];
+  const values = [26, 15];
+  const canvas = document.getElementById('chartDevices');
+  if (labels.length === 0) {
+    showNoData('chartDevices', '디바이스 데이터 수집 중');
+    return;
+  }
+  new Chart(canvas, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ['#00d68f','#0191f1','#10eeff','#ffc107','#7b61ff'],
+        borderWidth: 0,
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:12}}}}
+  });
+})();
+
+// ---- Hourly Sessions Chart ----
+(function() {
+  const labels = ["0\uc2dc", "1\uc2dc", "2\uc2dc", "6\uc2dc", "7\uc2dc", "8\uc2dc", "10\uc2dc", "11\uc2dc", "12\uc2dc", "13\uc2dc", "16\uc2dc", "17\uc2dc", "18\uc2dc", "19\uc2dc", "20\uc2dc", "21\uc2dc", "22\uc2dc", "23\uc2dc"];
+  const values = [3, 4, 1, 2, 1, 1, 1, 6, 2, 3, 2, 1, 3, 2, 7, 2, 1, 1];
+  const canvas = document.getElementById('chartHourlySessions');
+  if (labels.length === 0) {
+    showNoData('chartHourlySessions', '시간대별 데이터 수집 중');
+    return;
+  }
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label:'세션',
+        data: values,
+        backgroundColor: values.map(v => v === Math.max(...values) ? '#10eeff' : 'rgba(1,145,241,0.6)'),
+        borderRadius: 4,
+        barThickness: 18,
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#1f1f2f'}},
+        x:{grid:{display:false}}
+      }
+    }
+  });
+})();
+
+// ---- Lead by Grade Chart ----
+(function() {
+  const labels = ["#REF!", "\uace01"];
+  const values = [4, 1];
+  const canvas = document.getElementById('chartLeadGrade');
+  if (labels.length === 0) {
+    showNoData('chartLeadGrade', '리드 데이터 수집 중');
+    return;
+  }
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ['#00d68f','#0191f1','#10eeff','#ffc107','#7b61ff','#ff8c42'],
+        borderRadius: 4,
+        barThickness: 32,
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#1f1f2f'}}}}
+  });
+})();
+
+// ---- Consultation Type Chart ----
+(function() {
+  const labels = ["#REF!", "\uc804\ud654 \uc0c1\ub2f4"];
+  const values = [4, 1];
+  const canvas = document.getElementById('chartConsultType');
+  if (labels.length === 0) {
+    showNoData('chartConsultType', '상담 유형 데이터 수집 중');
+    return;
+  }
+  new Chart(canvas, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ['#00d68f','#0191f1','#10eeff','#ffc107','#7b61ff'],
+        borderWidth: 0,
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:12}}}}
+  });
+})();
+
+// ---- Media Tab Charts ----
+function renderMediaCharts() {
+  // YouTube Monthly
+  const ctx1 = document.getElementById('chartYtMonthly');
+  if (ctx1 && !ctx1._chart) {
+    const labels = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"];
+    const avgViews = [17733, 27775, 68517, 31164, 11579, 24052, 9960, 5322];
+    const uploads = [4, 11, 15, 26, 11, 10, 31, 6];
+    if (labels.length === 0) {
+      showNoData('chartYtMonthly', '유튜브 데이터 수집 중');
+    } else {
+      ctx1._chart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {label:'평균 조회수',data:avgViews,backgroundColor:'rgba(255,77,106,0.6)',borderRadius:4,barThickness:24,yAxisID:'y'},
+            {label:'업로드 수',data:uploads,type:'line',borderColor:'#10eeff',backgroundColor:'rgba(16,238,255,0.1)',tension:0.4,pointRadius:4,yAxisID:'y1'}
+          ]
+        },
+        options:{
+          responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:16}}},
+          scales:{
+            y:{beginAtZero:true,position:'left',grid:{color:'#1f1f2f'},ticks:{callback:v=>v>=1000?(v/1000)+'K':v}},
+            y1:{beginAtZero:true,position:'right',grid:{display:false},ticks:{stepSize:5}}
+          }
+        }
+      });
+    }
+  }
+
+  // YouTube Distribution
+  const ctx2 = document.getElementById('chartYtDist');
+  if (ctx2 && !ctx2._chart) {
+    const labels = ["1\ub9cc+", "5\ucc9c~1\ub9cc", "1\ucc9c~5\ucc9c", "1\ucc9c \ubbf8\ub9cc"];
+    const values = [101, 16, 48, 0];
+    if (labels.length === 0) {
+      showNoData('chartYtDist', '유튜브 데이터 수집 중');
+    } else {
+      ctx2._chart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: values,
+            backgroundColor: ['#ff4d6a','#ffc107','#0191f1','#666677'],
+            borderWidth: 0,
+          }]
+        },
+        options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:12}}}}
+      });
+    }
+  }
+}
+
+// ---- Studylab Charts ----
+function renderStudylabCharts() {
+  const ctx = document.getElementById('chartStudylabChannel');
+  if (ctx._chart) return;
+  const labels = ["#REF!", "\uc804\ud654 \uc0c1\ub2f4"];
+  const values = [4, 1];
+  if (labels.length === 0) {
+    showNoData('chartStudylabChannel', '상담 유형 데이터 수집 중');
+    return;
+  }
+  ctx._chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ['#00d68f','#10eeff','#ffc107','#7b61ff','#ff8c42'],
+        borderWidth: 0,
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:12}}}}
+  });
+}
+</script>
+
+</body>
+</html>
