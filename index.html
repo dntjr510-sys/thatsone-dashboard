@@ -212,40 +212,7 @@
   }
 </style>
 </head>
-<body>
-<!-- Password Lock -->
-<div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d14;z-index:9999;display:flex;align-items:center;justify-content:center">
-  <div style="text-align:center;max-width:360px;padding:40px">
-    <div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div>
-    <div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div>
-    <div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div>
-    <input id="lockPw" type="password" placeholder="비밀번호 입력"
-      style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px"
-      onkeypress="if(event.key==='Enter')checkPw()">
-    <button onclick="checkPw()"
-      style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;font-family:'Pretendard';cursor:pointer">
-      접속
-    </button>
-    <div style="margin-top:24px;font-size:11px;color:#333345">&copy; THAT'S ONE Marketing</div>
-  </div>
-</div>
-<script>
-async function checkPw(){
-  const pw=document.getElementById('lockPw').value;
-  const enc=new TextEncoder();
-  const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));
-  const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex==='9dd9aeda2e1089bcff803105d851f412796835081c492c6c7290bd6f5a904c92'){
-    document.getElementById('lockScreen').style.display='none';
-    sessionStorage.setItem('dash_auth','1');
-  }else{
-    document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다';
-    document.getElementById('lockPw').value='';
-  }
-}
-if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScreen').style.display='none';}
-</script>
-
+<body><div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d14;z-index:9999;display:flex;align-items:center;justify-content:center"><div style="text-align:center;max-width:360px;padding:40px"><div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div><div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div><div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div><input id="lockPw" type="password" placeholder="비밀번호 입력" style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px" onkeypress="if(event.key==='Enter')checkPw()"><button onclick="checkPw()" style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;cursor:pointer">접속</button></div></div><script>async function checkPw(){const pw=document.getElementById('lockPw').value;const enc=new TextEncoder();const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');if(hex=== + PASSWORD_HASH + ){document.getElementById('lockScreen').style.display='none';sessionStorage.setItem('dash_auth','1')}else{document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다';document.getElementById('lockPw').value=''}}if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScreen').style.display='none'}</script>
 
 <!-- Header -->
 <div class="header">
@@ -710,22 +677,22 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
   <div class="kpi-card green">
     <div class="kpi-label">오늘 조회수</div>
-    <div class="kpi-value">0</div>
+    <div class="kpi-value">67</div>
     <div class="kpi-sub neutral">실시간</div>
   </div>
   <div class="kpi-card blue">
     <div class="kpi-label">글 수</div>
-    <div class="kpi-value">0</div>
+    <div class="kpi-value">9</div>
     <div class="kpi-sub neutral">발행 완료</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">총 좋아요</div>
-    <div class="kpi-value">0</div>
+    <div class="kpi-value">2</div>
     <div class="kpi-sub neutral">공감</div>
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">검색 유입 키워드</div>
-    <div class="kpi-value">0</div>
+    <div class="kpi-value">7</div>
     <div class="kpi-sub neutral">오늘 기준</div>
   </div>
 </div>
@@ -734,10 +701,54 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   <div class="card">
     <div class="card-header">
       <div class="card-title">글별 조회수</div>
-      <div class="card-badge all">0개</div>
+      <div class="card-badge all">9개</div>
     </div>
     
-    <div style="text-align:center;padding:32px;color:var(--text3);font-size:13px">블로그 데이터 수집 중</div>
+    <table class="data-table">
+      <thead><tr><th>제목</th><th>오늘</th><th>누적</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224240184167" target="_blank" style="color:var(--green);text-decoration:none">대치동 관리형 독서실 댓츠원 스터디랩 | 연월주일 맞춤 1:1 스케줄링하...</a></td>
+          <td style="font-family:'Poppins';font-weight:600">39</td>
+          <td>39</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224238092889" target="_blank" style="color:var(--green);text-decoration:none">2027, 2028학년도 달라진 대학 입시 준비 방법</a></td>
+          <td style="font-family:'Poppins';font-weight:600">5</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224240425019" target="_blank" style="color:var(--green);text-decoration:none">약술형논술 내신 4~5등급 대학 입시 전략</a></td>
+          <td style="font-family:'Poppins';font-weight:600">5</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224203257459" target="_blank" style="color:var(--green);text-decoration:none">대치동 관리형 독학재수 댓츠원 스터디랩 교수진 소개</a></td>
+          <td style="font-family:'Poppins';font-weight:600">3</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224193774484" target="_blank" style="color:var(--green);text-decoration:none">독학재수학원 브랜드 댓츠원 김민성 대표님 소개</a></td>
+          <td style="font-family:'Poppins';font-weight:600">2</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224211845168" target="_blank" style="color:var(--green);text-decoration:none">2026년 3월 모의고사 점수 및 이후 전략</a></td>
+          <td style="font-family:'Poppins';font-weight:600">2</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224232494145" target="_blank" style="color:var(--green);text-decoration:none">대치동 입시전문가의 약대 입시 전략</a></td>
+          <td style="font-family:'Poppins';font-weight:600">2</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><a href="http://blog.naver.com/thatsone_studylab/224206506529" target="_blank" style="color:var(--green);text-decoration:none">대치동 독재관 댓츠원 연세대. 고려대 동시 합격 후기</a></td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="card">
     <div class="card-header">
@@ -745,7 +756,39 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="card-badge all">오늘</div>
     </div>
     
-    <div style="text-align:center;padding:32px;color:var(--text3);font-size:13px">검색 키워드 데이터 없음</div>
+    <table class="data-table">
+      <thead><tr><th>검색 키워드</th><th>유입</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text)">댓츠원 스터디랩</td>
+          <td style="font-family:'Poppins';font-weight:600">2</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2027 정시 생기부 수학 반영 대학</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2028 수능 최저 반영 방법 탐구과목</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2028중앙대논술</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">2029 대학입시안</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">고려대 재수</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">모고 수학 상위 8%</td>
+          <td style="font-family:'Poppins';font-weight:600">1</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
