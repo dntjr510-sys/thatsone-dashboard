@@ -1005,9 +1005,9 @@ function showNoData(canvasId, msg) {
 
 // ---- Daily Sessions Chart ----
 (function() {
-  const labels = ["04/05", "04/04"];
-  const sessions = [36, 8];
-  const users = [31, 8];
+  const labels = ["04/04", "04/05"];
+  const sessions = [8, 36];
+  const users = [8, 31];
   const canvas = document.getElementById('chartDailySessions');
   if (labels.length === 0) {
     showNoData('chartDailySessions', '일별 세션 데이터 수집 중');
