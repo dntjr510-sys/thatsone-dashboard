@@ -276,11 +276,14 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="tab-content active" id="tab-all">
 
 <!-- KPI Cards -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+  <div style="font-size:11px;color:var(--text3)">04.02 ~ 04.09 (최근 7일)</div>
+</div>
 <div class="kpi-grid">
   <div class="kpi-card blue">
     <div class="kpi-label">Sessions</div>
     <div class="kpi-value">175회</div>
-    <div class="kpi-sub neutral">GA4 기준</div>
+    <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">Users</div>
@@ -295,7 +298,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   <div class="kpi-card purple">
     <div class="kpi-label">Page Views</div>
     <div class="kpi-value">603회</div>
-    <div class="kpi-sub neutral">전체 페이지뷰</div>
+    <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card red">
     <div class="kpi-label">Avg Duration</div>
@@ -700,14 +703,14 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-04-06</td>
           <td><a href="https://youtube.com/watch?v=_dCnpu-BhQY" target="_blank" style="color:var(--accent2);text-decoration:none">고1 한국사, 진짜 효율적인 '실전 압축 공부법' 알려드립니다!</a></td>
-          <td style="font-family:'Poppins';font-weight:600">5,840</td>
+          <td style="font-family:'Poppins';font-weight:600">5,842</td>
           <td>113</td>
           <td>1.95%</td>
         </tr>
         <tr>
           <td style="color:var(--text)">2026-04-04</td>
           <td><a href="https://youtube.com/watch?v=jQ14qgkhK08" target="_blank" style="color:var(--accent2);text-decoration:none">고1 한국사·통합사회 벼락치기, 이 방법이면 1주일 만에 점수 바뀝니다</a></td>
-          <td style="font-family:'Poppins';font-weight:600">34,083</td>
+          <td style="font-family:'Poppins';font-weight:600">34,090</td>
           <td>1,153</td>
           <td>3.54%</td>
         </tr>
@@ -742,7 +745,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-04-01</td>
           <td><a href="https://youtube.com/watch?v=vJLR7Ulr-Xc" target="_blank" style="color:var(--accent2);text-decoration:none">내신 4~5등급, 아직 역전 가능한 입시 전략</a></td>
-          <td style="font-family:'Poppins';font-weight:600">13,357</td>
+          <td style="font-family:'Poppins';font-weight:600">13,358</td>
           <td>50</td>
           <td>0.52%</td>
         </tr>
@@ -1517,7 +1520,7 @@ function renderMediaCharts() {
   const ctx1 = document.getElementById('chartYtMonthly');
   if (ctx1 && !ctx1._chart) {
     const labels = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"];
-    const avgViews = [17765, 27814, 68532, 31180, 11649, 24154, 10179, 9411];
+    const avgViews = [17765, 27814, 68532, 31180, 11649, 24154, 10179, 9412];
     const uploads = [4, 11, 15, 26, 11, 10, 31, 8];
     if (labels.length === 0) {
       showNoData('chartYtMonthly', '유튜브 데이터 수집 중');
