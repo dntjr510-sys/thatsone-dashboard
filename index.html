@@ -212,40 +212,7 @@
   }
 </style>
 </head>
-<body>
-<!-- Password Lock -->
-<div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d14;z-index:9999;display:flex;align-items:center;justify-content:center">
-  <div style="text-align:center;max-width:360px;padding:40px">
-    <div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div>
-    <div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div>
-    <div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div>
-    <input id="lockPw" type="password" placeholder="비밀번호 입력"
-      style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px"
-      onkeypress="if(event.key==='Enter')checkPw()">
-    <button onclick="checkPw()"
-      style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;font-family:'Pretendard';cursor:pointer">
-      접속
-    </button>
-    <div style="margin-top:24px;font-size:11px;color:#333345">&copy; THAT'S ONE Marketing</div>
-  </div>
-</div>
-<script>
-async function checkPw(){
-  const pw=document.getElementById('lockPw').value;
-  const enc=new TextEncoder();
-  const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));
-  const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  if(hex==='9dd9aeda2e1089bcff803105d851f412796835081c492c6c7290bd6f5a904c92'){
-    document.getElementById('lockScreen').style.display='none';
-    sessionStorage.setItem('dash_auth','1');
-  }else{
-    document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다';
-    document.getElementById('lockPw').value='';
-  }
-}
-if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScreen').style.display='none';}
-</script>
-
+<body><div id="lockScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0d0d14;z-index:9999;display:flex;align-items:center;justify-content:center"><div style="text-align:center;max-width:360px;padding:40px"><div style="font-family:'Poppins';font-size:24px;font-weight:700;color:#e8e8f0;margin-bottom:8px">THAT'S ONE</div><div style="font-size:12px;color:#666677;letter-spacing:2px;margin-bottom:40px">MARKETING DASHBOARD</div><div id="lockMsg" style="font-size:13px;color:#ff4d6a;margin-bottom:16px;min-height:20px"></div><input id="lockPw" type="password" placeholder="비밀번호 입력" style="width:100%;padding:14px 18px;background:#14141f;border:1px solid #2a2a3a;border-radius:8px;color:#e8e8f0;font-size:14px;font-family:'Pretendard';outline:none;margin-bottom:16px" onkeypress="if(event.key==='Enter')checkPw()"><button onclick="checkPw()" style="width:100%;padding:14px;background:#0191f1;border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:600;font-family:'Pretendard';cursor:pointer">접속</button><div style="margin-top:24px;font-size:11px;color:#333345">&copy; THAT'S ONE Marketing</div></div></div><script>async function checkPw(){const pw=document.getElementById('lockPw').value;const enc=new TextEncoder();const hash=await crypto.subtle.digest('SHA-256',enc.encode(pw));const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');if(hex==='9dd9aeda2e1089bcff803105d851f412796835081c492c6c7290bd6f5a904c92'){document.getElementById('lockScreen').style.display='none';sessionStorage.setItem('dash_auth','1');}else{document.getElementById('lockMsg').textContent='비밀번호가 일치하지 않습니다';document.getElementById('lockPw').value='';}}if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScreen').style.display='none';}</script>
 
 <!-- Header -->
 <div class="header">
@@ -1084,13 +1051,6 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <table class="data-table">
       <thead><tr><th>캠페인</th><th>광고그룹</th><th>세션</th><th>비용</th><th>소스</th></tr></thead>
       <tbody>
-        <tr>
-          <td style="color:var(--text)">c1_awareness</td>
-          <td>—</td>
-          <td style="font-family:'Poppins'">3</td>
-          <td style="font-family:'Poppins'">—</td>
-          <td style="color:var(--text3)">UTM</td>
-        </tr>
         <tr>
           <td style="color:var(--text)">C1_브랜드 인지도_260410</td>
           <td>댓츠원 학부모</td>
