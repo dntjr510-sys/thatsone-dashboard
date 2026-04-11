@@ -297,12 +297,12 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">엑셀 배포 DB</div>
-    <div class="kpi-value">238건</div>
+    <div class="kpi-value">239건</div>
     <div class="kpi-sub neutral">생기부 진로 200개</div>
   </div>
   <div class="kpi-card red">
     <div class="kpi-label">Page Views</div>
-    <div class="kpi-value">806회</div>
+    <div class="kpi-value">807회</div>
     <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
@@ -957,13 +957,13 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card blue">
     <div class="kpi-label">네이버 노출</div>
-    <div class="kpi-value">3,576</div>
+    <div class="kpi-value">3,634</div>
     <div class="kpi-sub neutral">SA + 플레이스</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">네이버 클릭</div>
     <div class="kpi-value">41</div>
-    <div class="kpi-sub neutral">CTR 1.15%</div>
+    <div class="kpi-sub neutral">CTR 1.13%</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">네이버 CPC</div>
@@ -996,11 +996,11 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <tr>
       <td style="color:var(--text)">댓츠원 스터디랩</td>
       <td>SA 파워링크</td>
-      <td style="font-family:'Poppins'">344</td>
+      <td style="font-family:'Poppins'">361</td>
       <td style="font-family:'Poppins'">4</td>
       <td style="font-family:'Poppins'">₩299</td>
       <td style="font-family:'Poppins'">₩75</td>
-      <td style="font-family:'Poppins'">1.16%</td>
+      <td style="font-family:'Poppins'">1.11%</td>
       <td style="font-family:'Poppins'">₩100,000/일</td>
     </tr>
     <tr>
@@ -1016,11 +1016,11 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <tr>
       <td style="color:var(--text)">스터디랩 비시즌 캠페인_260403</td>
       <td>플레이스</td>
-      <td style="font-family:'Poppins'">3,232</td>
+      <td style="font-family:'Poppins'">3,273</td>
       <td style="font-family:'Poppins'">37</td>
       <td style="font-family:'Poppins'">₩138,302</td>
       <td style="font-family:'Poppins'">₩3,738</td>
-      <td style="font-family:'Poppins'">1.14%</td>
+      <td style="font-family:'Poppins'">1.13%</td>
       <td style="font-family:'Poppins'">₩30,000/일</td>
     </tr></tbody>
     </table>
@@ -1487,9 +1487,9 @@ function renderAdsCharts() {
   // Daily Impressions + Clicks
   const ctx1 = document.getElementById('chartAdDaily');
   if (ctx1 && !ctx1._chart) {
-    const labels = ["04-06", "04-07", "04-08", "04-09", "04-10", "04-10", "04-11", "04-11"];
-    const impressions = [428, 649, 543, 466, 28, 572, 316, 574];
-    const clicks = [5, 6, 7, 7, 0, 7, 4, 5];
+    const labels = ["04-06", "04-07", "04-08", "04-09", "04-10", "04-11"];
+    const impressions = [428, 649, 543, 466, 600, 948];
+    const clicks = [5, 6, 7, 7, 7, 9];
     if (labels.length === 0) {
       showNoData('chartAdDaily', '광고 일별 데이터 수집 중');
     } else {
@@ -1517,8 +1517,8 @@ function renderAdsCharts() {
   // Daily Cost
   const ctx2 = document.getElementById('chartAdCost');
   if (ctx2 && !ctx2._chart) {
-    const labels = ["04-06", "04-07", "04-08", "04-09", "04-10", "04-10", "04-11", "04-11"];
-    const cost = [12093, 25249, 23733, 27957, 0, 28096, 299, 21174];
+    const labels = ["04-06", "04-07", "04-08", "04-09", "04-10", "04-11"];
+    const cost = [12093, 25249, 23733, 27957, 28096, 21473];
     if (labels.length === 0) {
       showNoData('chartAdCost', '광고비 데이터 수집 중');
     } else {
