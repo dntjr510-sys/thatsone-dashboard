@@ -49,7 +49,7 @@
   .tab.active{background:var(--bg4);color:var(--accent2)}
 
   /* KPI Cards */
-  .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:24px}
+  .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:24px}
   .kpi-card{
     background:var(--bg2);border:1px solid var(--border);border-radius:10px;
     padding:20px 22px;position:relative;overflow:hidden;
@@ -255,7 +255,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <div class="header-title">MARKETING DASHBOARD</div>
   </div>
   <div class="header-right">
-    <div class="header-date">2026. 04. 11 (토)</div>
+    <div class="header-date">2026. 04. 12 (일)</div>
     <div class="header-status">LIVE</div>
   </div>
 </div>
@@ -277,18 +277,18 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 
 <!-- KPI Cards -->
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-  <div style="font-size:11px;color:var(--text3)">04.04 ~ 04.11 (최근 7일)</div>
+  <div style="font-size:11px;color:var(--text3)">04.05 ~ 04.12 (최근 7일)</div>
 </div>
 <div class="kpi-grid">
   <div class="kpi-card blue">
     <div class="kpi-label">Sessions</div>
-    <div class="kpi-value">262회</div>
+    <div class="kpi-value">255회</div>
     <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">Users</div>
-    <div class="kpi-value">182명</div>
-    <div class="kpi-sub neutral">신규 180명</div>
+    <div class="kpi-value">175명</div>
+    <div class="kpi-sub neutral">신규 172명</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">Total Leads</div>
@@ -296,13 +296,18 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <div class="kpi-sub neutral">Tally 폼 기준</div>
   </div>
   <div class="kpi-card purple">
-    <div class="kpi-label">Page Views</div>
-    <div class="kpi-value">824회</div>
-    <div class="kpi-sub neutral">7일간</div>
+    <div class="kpi-label">엑셀 배포 DB</div>
+    <div class="kpi-value">238건</div>
+    <div class="kpi-sub neutral">생기부 진로 200개</div>
   </div>
   <div class="kpi-card red">
+    <div class="kpi-label">Page Views</div>
+    <div class="kpi-value">806회</div>
+    <div class="kpi-sub neutral">7일간</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">Avg Duration</div>
-    <div class="kpi-value">280초</div>
+    <div class="kpi-value">287초</div>
     <div class="kpi-sub neutral">평균 세션 시간</div>
   </div>
 </div>
@@ -385,8 +390,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="channel-item">
         <div class="ch-left"><div class="ch-dot" style="background:var(--accent)"></div><div class="ch-name">(not set)</div></div>
         <div class="ch-right">
-          <div class="ch-stat"><div class="ch-stat-value">8</div><div class="ch-stat-label">세션</div></div>
-          <div class="ch-stat"><div class="ch-stat-value">8</div><div class="ch-stat-label">사용자</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">9</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">9</div><div class="ch-stat-label">사용자</div></div>
         </div>
       </div>
       <div class="channel-item">
@@ -525,8 +530,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
           <td style="color:var(--text);font-family:monospace;font-size:12px">/</td>
           <td>홈 (메인)</td>
           <td style="font-family:'Poppins';font-weight:600">204</td>
-          <td>164</td>
-          <td>132초</td>
+          <td>165</td>
+          <td>131초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/26</td>
@@ -560,8 +565,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
           <td style="color:var(--text);font-family:monospace;font-size:12px">/37</td>
           <td>각 지점 소개</td>
           <td style="font-family:'Poppins';font-weight:600">47</td>
-          <td>41</td>
-          <td>47초</td>
+          <td>42</td>
+          <td>46초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/30</td>
@@ -637,22 +642,22 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">전체 평균뷰</div>
-    <div class="kpi-value">25,306</div>
-    <div class="kpi-sub neutral">참여율 1.4%</div>
+    <div class="kpi-value">25,308</div>
+    <div class="kpi-sub neutral">참여율 1.41%</div>
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">최근 30일 평균</div>
-    <div class="kpi-value">11,032</div>
-    <div class="kpi-sub neutral">29개 &middot; 주 6.7개</div>
+    <div class="kpi-value">10,143</div>
+    <div class="kpi-sub neutral">28개 &middot; 주 6.5개</div>
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">이전 30일 평균</div>
-    <div class="kpi-value">15,374</div>
-    <div class="kpi-sub neutral">16개 업로드</div>
+    <div class="kpi-value">16,596</div>
+    <div class="kpi-sub neutral">17개 업로드</div>
   </div>
   <div class="kpi-card" style="border-color:var(--red)">
     <div class="kpi-label">성장률</div>
-    <div class="kpi-value" style="color:var(--red)">↓ 28.2%</div>
+    <div class="kpi-value" style="color:var(--red)">↓ 38.9%</div>
     <div class="kpi-sub down">vs 이전 30일</div>
   </div>
 </div>
@@ -724,16 +729,16 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-04-11</td>
           <td><a href="https://youtube.com/watch?v=pnekJw7BRDY" target="_blank" style="color:var(--accent2);text-decoration:none">생기부 차별화, ‘진로 컨셉’에서 갈립니다｜200개 무료 공개!</a></td>
-          <td style="font-family:'Poppins';font-weight:600">972</td>
-          <td>262</td>
-          <td>49.9%</td>
+          <td style="font-family:'Poppins';font-weight:600">1,003</td>
+          <td>275</td>
+          <td>50.65%</td>
         </tr>
         <tr>
           <td style="color:var(--text)">2026-04-09</td>
           <td><a href="https://youtube.com/watch?v=9Ddqlehv5bE" target="_blank" style="color:var(--accent2);text-decoration:none">국숭세단·광명상가 입결 전면 분석 : 왜 예측이 계속 틀릴까</a></td>
-          <td style="font-family:'Poppins';font-weight:600">7,754</td>
+          <td style="font-family:'Poppins';font-weight:600">7,778</td>
           <td>106</td>
-          <td>1.41%</td>
+          <td>1.4%</td>
         </tr>
         <tr>
           <td style="color:var(--text)">2026-04-06</td>
@@ -752,9 +757,9 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-04-04</td>
           <td><a href="https://youtube.com/watch?v=jQ14qgkhK08" target="_blank" style="color:var(--accent2);text-decoration:none">고1 한국사·통합사회 벼락치기, 이 방법이면 1주일 만에 점수 바뀝니다</a></td>
-          <td style="font-family:'Poppins';font-weight:600">40,538</td>
-          <td>1,487</td>
-          <td>3.82%</td>
+          <td style="font-family:'Poppins';font-weight:600">40,642</td>
+          <td>1,494</td>
+          <td>3.83%</td>
         </tr>
         <tr>
           <td style="color:var(--text)">2026-04-03</td>
@@ -967,7 +972,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">Google Ads 세션</div>
-    <div class="kpi-value">262</div>
+    <div class="kpi-value">263</div>
     <div class="kpi-sub neutral">GA4 연동</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
@@ -1309,8 +1314,8 @@ function showNoData(canvasId, msg) {
 // ---- Daily Sessions Chart ----
 (function() {
   const labels = ["04/04", "04/05", "04/06", "04/07", "04/08", "04/09", "04/10", "04/11"];
-  const sessions = [8, 36, 59, 32, 32, 38, 39, 19];
-  const users = [8, 31, 44, 24, 24, 33, 33, 16];
+  const sessions = [8, 36, 59, 32, 32, 38, 39, 20];
+  const users = [8, 31, 44, 24, 24, 33, 33, 17];
   const canvas = document.getElementById('chartDailySessions');
   if (labels.length === 0) {
     showNoData('chartDailySessions', '일별 세션 데이터 수집 중');
@@ -1332,7 +1337,7 @@ function showNoData(canvasId, msg) {
 // ---- Device Chart ----
 (function() {
   const labels = ["desktop", "mobile", "tablet"];
-  const values = [149, 111, 3];
+  const values = [149, 112, 3];
   const canvas = document.getElementById('chartDevices');
   if (labels.length === 0) {
     showNoData('chartDevices', '디바이스 데이터 수집 중');
@@ -1355,7 +1360,7 @@ function showNoData(canvasId, msg) {
 // ---- Hourly Sessions Chart ----
 (function() {
   const labels = ["0\uc2dc", "1\uc2dc", "2\uc2dc", "3\uc2dc", "6\uc2dc", "7\uc2dc", "8\uc2dc", "9\uc2dc", "10\uc2dc", "11\uc2dc", "12\uc2dc", "13\uc2dc", "14\uc2dc", "15\uc2dc", "16\uc2dc", "17\uc2dc", "18\uc2dc", "19\uc2dc", "20\uc2dc", "21\uc2dc", "22\uc2dc", "23\uc2dc"];
-  const values = [14, 6, 2, 4, 4, 2, 4, 10, 15, 15, 16, 14, 19, 15, 14, 18, 22, 13, 13, 27, 14, 24];
+  const values = [14, 6, 2, 4, 4, 2, 4, 10, 15, 15, 16, 14, 19, 15, 14, 18, 22, 13, 13, 27, 14, 25];
   const canvas = document.getElementById('chartHourlySessions');
   if (labels.length === 0) {
     showNoData('chartHourlySessions', '시간대별 데이터 수집 중');
@@ -1548,7 +1553,7 @@ function renderMediaCharts() {
   const ctx1 = document.getElementById('chartYtMonthly');
   if (ctx1 && !ctx1._chart) {
     const labels = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"];
-    const avgViews = [17788, 27836, 68542, 31192, 11685, 24212, 10320, 9242];
+    const avgViews = [17788, 27836, 68542, 31192, 11688, 24212, 10323, 9258];
     const uploads = [4, 11, 15, 26, 11, 10, 31, 10];
     if (labels.length === 0) {
       showNoData('chartYtMonthly', '유튜브 데이터 수집 중');
@@ -1578,7 +1583,7 @@ function renderMediaCharts() {
   const ctx2 = document.getElementById('chartYtDist');
   if (ctx2 && !ctx2._chart) {
     const labels = ["1\ub9cc+", "5\ucc9c~1\ub9cc", "1\ucc9c~5\ucc9c", "1\ucc9c \ubbf8\ub9cc"];
-    const values = [103, 18, 47, 1];
+    const values = [103, 18, 48, 0];
     if (labels.length === 0) {
       showNoData('chartYtDist', '유튜브 데이터 수집 중');
     } else {
