@@ -282,7 +282,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid">
   <div class="kpi-card blue">
     <div class="kpi-label">Sessions</div>
-    <div class="kpi-value">255회</div>
+    <div class="kpi-value">256회</div>
     <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card cyan">
@@ -297,7 +297,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">엑셀 배포 DB</div>
-    <div class="kpi-value">239건</div>
+    <div class="kpi-value">241건</div>
     <div class="kpi-sub neutral">생기부 진로 200개</div>
   </div>
   <div class="kpi-card red">
@@ -307,7 +307,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">Avg Duration</div>
-    <div class="kpi-value">287초</div>
+    <div class="kpi-value">286초</div>
     <div class="kpi-sub neutral">평균 세션 시간</div>
   </div>
 </div>
@@ -341,8 +341,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="channel-item">
         <div class="ch-left"><div class="ch-dot" style="background:var(--green)"></div><div class="ch-name">(direct) / (none)</div></div>
         <div class="ch-right">
-          <div class="ch-stat"><div class="ch-stat-value">69</div><div class="ch-stat-label">세션</div></div>
-          <div class="ch-stat"><div class="ch-stat-value">46</div><div class="ch-stat-label">사용자</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">70</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">47</div><div class="ch-stat-label">사용자</div></div>
         </div>
       </div>
       <div class="channel-item">
@@ -544,8 +544,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
           <td style="color:var(--text);font-family:monospace;font-size:12px">/36</td>
           <td>스터디랩 소개</td>
           <td style="font-family:'Poppins';font-weight:600">77</td>
-          <td>59</td>
-          <td>213초</td>
+          <td>60</td>
+          <td>209초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/49</td>
@@ -972,7 +972,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">Google Ads 세션</div>
-    <div class="kpi-value">263</div>
+    <div class="kpi-value">264</div>
     <div class="kpi-sub neutral">GA4 연동</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
@@ -1054,7 +1054,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
   <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">Google Ads 세션</div>
-    <div class="kpi-value">263</div>
+    <div class="kpi-value">264</div>
     <div class="kpi-sub neutral">GA4 연동</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
@@ -1064,7 +1064,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">활성 캠페인</div>
-    <div class="kpi-value">0개</div>
+    <div class="kpi-value">1개</div>
     <div class="kpi-sub neutral">C1 + C4</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
@@ -1080,7 +1080,25 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="card-title">Google Ads 캠페인 성과</div>
       <div class="card-badge all">GA4 연동</div>
     </div>
-    <div style="text-align:center;padding:32px;color:var(--text3)">Google Ads 데이터 없음 — GA4 연동 후 24~48h 소요</div>
+    
+    <table class="data-table">
+      <thead><tr><th>캠페인</th><th>광고그룹</th><th>세션</th><th>비용</th><th>소스</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text)">c1_awareness</td>
+          <td>—</td>
+          <td style="font-family:'Poppins'">3</td>
+          <td style="font-family:'Poppins'">—</td>
+          <td style="color:var(--text3)">UTM</td>
+        </tr>
+        <tr>
+          <td style="color:var(--text)">C1_브랜드 인지도_260410</td>
+          <td>댓츠원 학부모</td>
+          <td style="font-family:'Poppins'">2</td>
+          <td style="font-family:'Poppins'">₩25,956</td>
+          <td style="color:var(--text3)">Ads</td>
+        </tr></tbody>
+    </table>
   </div>
 </div>
 
@@ -1405,7 +1423,7 @@ function showNoData(canvasId, msg) {
 // ---- Daily Sessions Chart ----
 (function() {
   const labels = ["04/04", "04/05", "04/06", "04/07", "04/08", "04/09", "04/10", "04/11"];
-  const sessions = [8, 36, 59, 32, 32, 38, 39, 20];
+  const sessions = [8, 36, 59, 32, 32, 38, 39, 21];
   const users = [8, 31, 44, 24, 24, 33, 33, 17];
   const canvas = document.getElementById('chartDailySessions');
   if (labels.length === 0) {
@@ -1428,7 +1446,7 @@ function showNoData(canvasId, msg) {
 // ---- Device Chart ----
 (function() {
   const labels = ["desktop", "mobile", "tablet"];
-  const values = [149, 112, 3];
+  const values = [150, 112, 3];
   const canvas = document.getElementById('chartDevices');
   if (labels.length === 0) {
     showNoData('chartDevices', '디바이스 데이터 수집 중');
@@ -1451,7 +1469,7 @@ function showNoData(canvasId, msg) {
 // ---- Hourly Sessions Chart ----
 (function() {
   const labels = ["0\uc2dc", "1\uc2dc", "2\uc2dc", "3\uc2dc", "6\uc2dc", "7\uc2dc", "8\uc2dc", "9\uc2dc", "10\uc2dc", "11\uc2dc", "12\uc2dc", "13\uc2dc", "14\uc2dc", "15\uc2dc", "16\uc2dc", "17\uc2dc", "18\uc2dc", "19\uc2dc", "20\uc2dc", "21\uc2dc", "22\uc2dc", "23\uc2dc"];
-  const values = [14, 6, 2, 4, 4, 2, 4, 10, 15, 15, 16, 14, 19, 15, 14, 18, 22, 13, 13, 27, 14, 25];
+  const values = [14, 6, 2, 4, 4, 2, 4, 10, 15, 15, 16, 14, 19, 15, 14, 18, 22, 13, 13, 27, 14, 26];
   const canvas = document.getElementById('chartHourlySessions');
   if (labels.length === 0) {
     showNoData('chartHourlySessions', '시간대별 데이터 수집 중');
