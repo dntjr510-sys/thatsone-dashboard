@@ -1046,13 +1046,104 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 </div>
 
 <!-- Google Ads -->
+<div style="display:flex;align-items:center;gap:8px;margin:24px 0 16px">
+  <div style="font-size:16px;font-weight:700;color:var(--orange)">Google Ads</div>
+  <div style="font-size:12px;color:var(--text3)">YouTube 캠페인</div>
+</div>
+
+<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+  <div class="kpi-card" style="border-color:var(--orange)">
+    <div class="kpi-label">Google Ads 세션</div>
+    <div class="kpi-value">263</div>
+    <div class="kpi-sub neutral">GA4 연동</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--orange)">
+    <div class="kpi-label">Google Ads 비용</div>
+    <div class="kpi-value">₩25,956</div>
+    <div class="kpi-sub neutral">누적</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--orange)">
+    <div class="kpi-label">활성 캠페인</div>
+    <div class="kpi-value">0개</div>
+    <div class="kpi-sub neutral">C1 + C4</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--orange)">
+    <div class="kpi-label">전환</div>
+    <div class="kpi-value">—</div>
+    <div class="kpi-sub neutral">form_submit 연동 완료</div>
+  </div>
+</div>
+
 <div class="section-grid full">
   <div class="card">
     <div class="card-header">
-      <div class="card-title">Google Ads (GA4 연동)</div>
-      <div class="card-badge all">YouTube 광고</div>
+      <div class="card-title">Google Ads 캠페인 성과</div>
+      <div class="card-badge all">GA4 연동</div>
     </div>
     <div style="text-align:center;padding:32px;color:var(--text3)">Google Ads 데이터 없음 — GA4 연동 후 24~48h 소요</div>
+  </div>
+</div>
+
+<!-- Google Ads Campaign Roadmap -->
+<div class="section-grid full">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">캠페인 전략 로드맵</div>
+      <div class="card-badge all">6개 캠페인</div>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>#</th><th>캠페인</th><th>유형</th><th>타겟</th><th>월 예산</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--accent);font-weight:700">C1</td>
+          <td>브랜드 인지</td>
+          <td>Video Views</td>
+          <td>학부모 35~54세 · 에버그린 소재</td>
+          <td style="font-family:'Poppins'">₩400,000</td>
+          <td style="color:var(--green)">● 라이브</td>
+        </tr>
+        <tr>
+          <td style="color:var(--red);font-weight:700">C4</td>
+          <td>스터디랩 긴급</td>
+          <td>Video Action</td>
+          <td>N수생 18~24 + 학부모 · 서울+인천</td>
+          <td style="font-family:'Poppins'">₩900,000</td>
+          <td style="color:var(--green)">● 라이브</td>
+        </tr>
+        <tr>
+          <td style="color:var(--yellow);font-weight:700">C2</td>
+          <td>리마케팅 고려</td>
+          <td>Demand Gen</td>
+          <td>C1 시청자 리마케팅 · 사업부별</td>
+          <td style="font-family:'Poppins'">₩500,000</td>
+          <td style="color:var(--text3)">○ 모수 1만 후</td>
+        </tr>
+        <tr>
+          <td style="color:var(--green);font-weight:700">C3</td>
+          <td>리드 전환</td>
+          <td>Video Action</td>
+          <td>리마케팅 + 맞춤 의도 · tCPA</td>
+          <td style="font-family:'Poppins'">₩600,000</td>
+          <td style="color:var(--text3)">○ 전환 30건 후</td>
+        </tr>
+        <tr>
+          <td style="color:var(--purple);font-weight:700">C5</td>
+          <td>ONE-IT 사전등록</td>
+          <td>Demand Gen</td>
+          <td>기존 고객 + 구독자</td>
+          <td style="font-family:'Poppins'">₩300,000</td>
+          <td style="color:var(--text3)">○ 출시 2개월 전</td>
+        </tr>
+        <tr>
+          <td style="color:var(--purple);font-weight:700">C6</td>
+          <td>ONE-IT 전환</td>
+          <td>Video Action</td>
+          <td>사전 등록자 리마케팅</td>
+          <td style="font-family:'Poppins'">TBD</td>
+          <td style="color:var(--text3)">○ 출시 후</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
