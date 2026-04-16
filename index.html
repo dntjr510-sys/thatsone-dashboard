@@ -297,7 +297,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">엑셀 배포 DB</div>
-    <div class="kpi-value">1,070건</div>
+    <div class="kpi-value">1,071건</div>
     <div class="kpi-sub neutral">생기부 진로 200개</div>
   </div>
   <div class="kpi-card red">
@@ -824,13 +824,13 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">총 신청</div>
-    <div class="kpi-value" style="color:var(--yellow)">1,070건</div>
+    <div class="kpi-value" style="color:var(--yellow)">1,071건</div>
     <div class="kpi-sub neutral">Google Forms</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고1</div>
     <div class="kpi-value">519건</div>
-    <div class="kpi-sub neutral">49%</div>
+    <div class="kpi-sub neutral">48%</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고2</div>
@@ -839,7 +839,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고3 + 중학생</div>
-    <div class="kpi-value">324건</div>
+    <div class="kpi-value">325건</div>
     <div class="kpi-sub neutral">N수 18건</div>
   </div>
 </div>
@@ -1087,37 +1087,46 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <!-- ==================== TAB: 광고 ==================== -->
 <div class="tab-content" id="tab-ads">
 
+<!-- 7일 KPI -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+  <div style="font-size:11px;color:var(--text3)">04-10 ~ 04-16 (최근 7일)</div>
+</div>
 <div class="kpi-grid" style="grid-template-columns:repeat(6,1fr)">
   <div class="kpi-card red">
-    <div class="kpi-label">총 광고비</div>
-    <div class="kpi-value">₩1,528,597</div>
-    <div class="kpi-sub neutral">네이버 + Google</div>
-  </div>
-  <div class="kpi-card blue">
-    <div class="kpi-label">네이버 노출</div>
-    <div class="kpi-value">14,854</div>
+    <div class="kpi-label">네이버 7일 비용</div>
+    <div class="kpi-value">₩407,354</div>
     <div class="kpi-sub neutral">SA + 플레이스</div>
   </div>
+  <div class="kpi-card blue">
+    <div class="kpi-label">네이버 7일 노출</div>
+    <div class="kpi-value">12,768</div>
+    <div class="kpi-sub neutral">일 평균 1,824</div>
+  </div>
   <div class="kpi-card cyan">
-    <div class="kpi-label">네이버 클릭</div>
-    <div class="kpi-value">159</div>
-    <div class="kpi-sub neutral">CTR 1.07%</div>
+    <div class="kpi-label">네이버 7일 클릭</div>
+    <div class="kpi-value">134</div>
+    <div class="kpi-sub neutral">CTR 1.05%</div>
   </div>
   <div class="kpi-card green">
-    <div class="kpi-label">네이버 CPC</div>
-    <div class="kpi-value">₩3,122</div>
+    <div class="kpi-label">네이버 7일 CPC</div>
+    <div class="kpi-value">₩3,040</div>
     <div class="kpi-sub neutral">평균</div>
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">Google 조회수</div>
     <div class="kpi-value">85,267</div>
-    <div class="kpi-sub neutral">TrueView</div>
+    <div class="kpi-sub neutral">TrueView 누적</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">Google CPV</div>
     <div class="kpi-value">₩12</div>
     <div class="kpi-sub neutral">평균</div>
   </div>
+</div>
+
+<!-- 누적 요약 -->
+<div style="display:flex;gap:16px;margin:12px 0;font-size:10px;color:var(--text3)">
+  <span>누적 — 노출 14,854 · 클릭 159 · 비용 ₩496,387 · CPC ₩3,122 · CTR 1.07%</span>
 </div>
 
 <!-- Naver SA Campaign Table -->
@@ -1180,6 +1189,108 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="card-badge all">네이버</div>
     </div>
     <div class="chart-container"><canvas id="chartAdCost"></canvas></div>
+  </div>
+</div>
+
+<!-- SA 일별 상세 -->
+<div class="section-grid full">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">네이버 SA 일별 상세</div>
+      <div class="card-badge all">날짜별</div>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>날짜</th><th>노출</th><th>클릭</th><th>비용</th><th>CPC</th><th>CTR</th></tr></thead>
+      <tbody>
+    <tr>
+      <td>04-16</td>
+      <td style="font-family:'Poppins'">2,607</td>
+      <td style="font-family:'Poppins'">22</td>
+      <td style="font-family:'Poppins'">₩80,945</td>
+      <td style="font-family:'Poppins'">₩3,679</td>
+      <td style="font-family:'Poppins'">0.84%</td>
+    </tr>
+    <tr>
+      <td>04-15</td>
+      <td style="font-family:'Poppins'">2,368</td>
+      <td style="font-family:'Poppins'">30</td>
+      <td style="font-family:'Poppins'">₩80,131</td>
+      <td style="font-family:'Poppins'">₩2,671</td>
+      <td style="font-family:'Poppins'">1.27%</td>
+    </tr>
+    <tr>
+      <td>04-14</td>
+      <td style="font-family:'Poppins'">2,366</td>
+      <td style="font-family:'Poppins'">25</td>
+      <td style="font-family:'Poppins'">₩79,181</td>
+      <td style="font-family:'Poppins'">₩3,167</td>
+      <td style="font-family:'Poppins'">1.06%</td>
+    </tr>
+    <tr>
+      <td>04-13</td>
+      <td style="font-family:'Poppins'">2,143</td>
+      <td style="font-family:'Poppins'">21</td>
+      <td style="font-family:'Poppins'">₩68,834</td>
+      <td style="font-family:'Poppins'">₩3,278</td>
+      <td style="font-family:'Poppins'">0.98%</td>
+    </tr>
+    <tr>
+      <td>04-12</td>
+      <td style="font-family:'Poppins'">1,736</td>
+      <td style="font-family:'Poppins'">20</td>
+      <td style="font-family:'Poppins'">₩48,694</td>
+      <td style="font-family:'Poppins'">₩2,435</td>
+      <td style="font-family:'Poppins'">1.15%</td>
+    </tr>
+    <tr>
+      <td>04-11</td>
+      <td style="font-family:'Poppins'">948</td>
+      <td style="font-family:'Poppins'">9</td>
+      <td style="font-family:'Poppins'">₩21,473</td>
+      <td style="font-family:'Poppins'">₩2,386</td>
+      <td style="font-family:'Poppins'">0.95%</td>
+    </tr>
+    <tr>
+      <td>04-10</td>
+      <td style="font-family:'Poppins'">600</td>
+      <td style="font-family:'Poppins'">7</td>
+      <td style="font-family:'Poppins'">₩28,096</td>
+      <td style="font-family:'Poppins'">₩4,014</td>
+      <td style="font-family:'Poppins'">1.17%</td>
+    </tr>
+    <tr>
+      <td>04-09</td>
+      <td style="font-family:'Poppins'">466</td>
+      <td style="font-family:'Poppins'">7</td>
+      <td style="font-family:'Poppins'">₩27,957</td>
+      <td style="font-family:'Poppins'">₩3,994</td>
+      <td style="font-family:'Poppins'">1.5%</td>
+    </tr>
+    <tr>
+      <td>04-08</td>
+      <td style="font-family:'Poppins'">543</td>
+      <td style="font-family:'Poppins'">7</td>
+      <td style="font-family:'Poppins'">₩23,733</td>
+      <td style="font-family:'Poppins'">₩3,390</td>
+      <td style="font-family:'Poppins'">1.29%</td>
+    </tr>
+    <tr>
+      <td>04-07</td>
+      <td style="font-family:'Poppins'">649</td>
+      <td style="font-family:'Poppins'">6</td>
+      <td style="font-family:'Poppins'">₩25,249</td>
+      <td style="font-family:'Poppins'">₩4,208</td>
+      <td style="font-family:'Poppins'">0.92%</td>
+    </tr>
+    <tr>
+      <td>04-06</td>
+      <td style="font-family:'Poppins'">428</td>
+      <td style="font-family:'Poppins'">5</td>
+      <td style="font-family:'Poppins'">₩12,093</td>
+      <td style="font-family:'Poppins'">₩2,419</td>
+      <td style="font-family:'Poppins'">1.17%</td>
+    </tr></tbody>
+    </table>
   </div>
 </div>
 
