@@ -717,7 +717,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   <div class="card">
     <div class="card-header">
       <div class="card-title">구독자 추이</div>
-      <div class="card-badge all">1일</div>
+      <div class="card-badge all">30일</div>
     </div>
     <div class="chart-container"><canvas id="chartYtSubscribers"></canvas></div>
   </div>
@@ -2316,8 +2316,8 @@ function renderMediaCharts() {
   // YouTube Subscribers
   const ctxSub = document.getElementById('chartYtSubscribers');
   if (ctxSub && !ctxSub._chart) {
-    const labels = ["04-17"];
-    const values = [35700];
+    const labels = ["03-19", "03-20", "03-21", "03-22", "03-23", "03-24", "03-25", "03-26", "03-27", "03-28", "03-29", "03-30", "03-31", "04-01", "04-02", "04-03", "04-04", "04-05", "04-06", "04-07", "04-08", "04-09", "04-10", "04-11", "04-12", "04-13", "04-14", "04-15", "04-16", "04-17"];
+    const values = [31400, 31500, 31500, 31600, 31700, 31700, 31900, 32100, 32400, 32600, 32800, 32900, 33000, 33100, 33200, 33200, 33400, 33700, 33900, 34200, 34300, 34500, 34600, 34800, 34900, 35100, 35400, 35500, 35600, 35700];
     if (labels.length === 0) {
       showNoData('chartYtSubscribers', '구독자 추이 데이터 수집 중 (매일 리프레시 시 축적)');
     } else {
