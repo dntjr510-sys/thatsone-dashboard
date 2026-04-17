@@ -282,12 +282,12 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid">
   <div class="kpi-card blue">
     <div class="kpi-label">Sessions</div>
-    <div class="kpi-value">342회</div>
+    <div class="kpi-value">343회</div>
     <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">Users</div>
-    <div class="kpi-value">268명</div>
+    <div class="kpi-value">269명</div>
     <div class="kpi-sub neutral">신규 248명</div>
   </div>
   <div class="kpi-card green">
@@ -302,12 +302,12 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card red">
     <div class="kpi-label">Page Views</div>
-    <div class="kpi-value">695회</div>
+    <div class="kpi-value">696회</div>
     <div class="kpi-sub neutral">7일간</div>
   </div>
   <div class="kpi-card" style="border-color:var(--orange)">
     <div class="kpi-label">Avg Duration</div>
-    <div class="kpi-value">191초</div>
+    <div class="kpi-value">193초</div>
     <div class="kpi-sub neutral">평균 세션 시간</div>
   </div>
 </div>
@@ -369,8 +369,8 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
       <div class="channel-item">
         <div class="ch-left"><div class="ch-dot" style="background:var(--purple)"></div><div class="ch-name">(not set)</div></div>
         <div class="ch-right">
-          <div class="ch-stat"><div class="ch-stat-value">55</div><div class="ch-stat-label">세션</div></div>
-          <div class="ch-stat"><div class="ch-stat-value">50</div><div class="ch-stat-label">사용자</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">56</div><div class="ch-stat-label">세션</div></div>
+          <div class="ch-stat"><div class="ch-stat-value">51</div><div class="ch-stat-label">사용자</div></div>
         </div>
       </div>
       <div class="channel-item">
@@ -601,7 +601,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
           <td>댓츠원 프로그램</td>
           <td style="font-family:'Poppins';font-weight:600">71</td>
           <td>49</td>
-          <td>45초</td>
+          <td>58초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/main</td>
@@ -613,9 +613,9 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/41</td>
           <td>합격 스토리</td>
-          <td style="font-family:'Poppins';font-weight:600">30</td>
-          <td>24</td>
-          <td>150초</td>
+          <td style="font-family:'Poppins';font-weight:600">31</td>
+          <td>25</td>
+          <td>144초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/50</td>
@@ -708,6 +708,24 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <div style="font-size:9px;color:var(--text3)">목표까지</div>
         <div style="font-family:'Poppins';font-size:22px;font-weight:800;color:var(--yellow)">64,300</div>
         <div style="font-size:9px;color:var(--text3)">명 남음</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05)">
+      <div style="text-align:center">
+        <div style="font-size:9px;color:var(--text3)">30일 누적 증가</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--green)">+4,300</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:9px;color:var(--text3)">30일 평균</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--accent)">+148<span style="font-size:9px;color:var(--text3)">/일</span></div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:9px;color:var(--text3)">최근 7일 평균</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--yellow)">+150<span style="font-size:9px;color:var(--text3)">/일</span></div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:9px;color:var(--text3)">10만 예상 달성</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--red)">433일 후</div>
       </div>
     </div>
   </div>
@@ -2000,8 +2018,8 @@ function showNoData(canvasId, msg) {
 // ---- Daily Sessions Chart ----
 (function() {
   const labels = ["04/04", "04/05", "04/06", "04/07", "04/08", "04/09", "04/10", "04/11", "04/12", "04/13", "04/14", "04/15", "04/16", "04/17"];
-  const sessions = [8, 36, 59, 32, 32, 38, 39, 24, 46, 55, 54, 47, 63, 14];
-  const users = [8, 31, 44, 24, 24, 33, 33, 19, 40, 48, 44, 44, 57, 12];
+  const sessions = [8, 36, 59, 32, 32, 38, 39, 24, 46, 55, 54, 47, 63, 15];
+  const users = [8, 31, 44, 24, 24, 33, 33, 19, 40, 48, 44, 44, 57, 13];
   const canvas = document.getElementById('chartDailySessions');
   if (labels.length === 0) {
     showNoData('chartDailySessions', '일별 세션 데이터 수집 중');
@@ -2023,7 +2041,7 @@ function showNoData(canvasId, msg) {
 // ---- Device Chart ----
 (function() {
   const labels = ["mobile", "desktop", "tablet"];
-  const values = [280, 261, 8];
+  const values = [281, 261, 8];
   const canvas = document.getElementById('chartDevices');
   if (labels.length === 0) {
     showNoData('chartDevices', '디바이스 데이터 수집 중');
@@ -2046,7 +2064,7 @@ function showNoData(canvasId, msg) {
 // ---- Hourly Sessions Chart ----
 (function() {
   const labels = ["0\uc2dc", "1\uc2dc", "2\uc2dc", "3\uc2dc", "4\uc2dc", "5\uc2dc", "6\uc2dc", "7\uc2dc", "8\uc2dc", "9\uc2dc", "10\uc2dc", "11\uc2dc", "12\uc2dc", "13\uc2dc", "14\uc2dc", "15\uc2dc", "16\uc2dc", "17\uc2dc", "18\uc2dc", "19\uc2dc", "20\uc2dc", "21\uc2dc", "22\uc2dc", "23\uc2dc"];
-  const values = [25, 16, 8, 13, 6, 9, 12, 8, 14, 23, 25, 34, 31, 25, 39, 40, 37, 35, 35, 28, 24, 39, 24, 39];
+  const values = [25, 16, 8, 13, 6, 9, 12, 8, 14, 23, 25, 34, 31, 26, 39, 40, 37, 35, 35, 28, 24, 39, 24, 39];
   const canvas = document.getElementById('chartHourlySessions');
   if (labels.length === 0) {
     showNoData('chartHourlySessions', '시간대별 데이터 수집 중');
