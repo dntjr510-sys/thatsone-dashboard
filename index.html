@@ -297,7 +297,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card purple">
     <div class="kpi-label">엑셀 배포 DB</div>
-    <div class="kpi-value">0건</div>
+    <div class="kpi-value">1,158건</div>
     <div class="kpi-sub neutral">생기부 진로 200개</div>
   </div>
   <div class="kpi-card red">
@@ -662,9 +662,9 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/49</td>
           <td>컨설팅랩</td>
-          <td style="font-family:'Poppins';font-weight:600">549</td>
-          <td>430</td>
-          <td>179초</td>
+          <td style="font-family:'Poppins';font-weight:600">551</td>
+          <td>432</td>
+          <td>178초</td>
         </tr>
         <tr>
           <td style="color:var(--text);font-family:monospace;font-size:12px">/26</td>
@@ -948,7 +948,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-04-15</td>
           <td><a href="https://youtube.com/watch?v=KiIQkrUcFNs" target="_blank" style="color:var(--accent2);text-decoration:none">의외로 학교 수준이 딱 보이는 수행평가 난이도! 이걸로 확인할 수 있습니다</a></td>
-          <td style="font-family:'Poppins';font-weight:600">15,038</td>
+          <td style="font-family:'Poppins';font-weight:600">15,040</td>
           <td>40</td>
           <td>0.29%</td>
         </tr>
@@ -966,23 +966,23 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">총 신청</div>
-    <div class="kpi-value" style="color:var(--yellow)">0건</div>
+    <div class="kpi-value" style="color:var(--yellow)">1,158건</div>
     <div class="kpi-sub neutral">Google Forms</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고1</div>
-    <div class="kpi-value">0건</div>
-    <div class="kpi-sub neutral">0%</div>
+    <div class="kpi-value">547건</div>
+    <div class="kpi-sub neutral">47%</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고2</div>
-    <div class="kpi-value">0건</div>
-    <div class="kpi-sub neutral">0%</div>
+    <div class="kpi-value">231건</div>
+    <div class="kpi-sub neutral">20%</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">고3 + 중학생</div>
-    <div class="kpi-value">0건</div>
-    <div class="kpi-sub neutral">N수 0건</div>
+    <div class="kpi-value">360건</div>
+    <div class="kpi-sub neutral">N수 20건</div>
   </div>
 </div>
 
@@ -2434,7 +2434,7 @@ function showNoData(canvasId, msg) {
 // ---- Device Chart ----
 (function() {
   const labels = ["mobile", "desktop", "tablet"];
-  const values = [954, 478, 30];
+  const values = [956, 478, 30];
   const canvas = document.getElementById('chartDevices');
   if (labels.length === 0) {
     showNoData('chartDevices', '디바이스 데이터 수집 중');
@@ -2763,7 +2763,7 @@ function renderMediaCharts() {
   const ctx1 = document.getElementById('chartYtMonthly');
   if (ctx1 && !ctx1._chart) {
     const labels = ["2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04"];
-    const avgViews = [17950, 28054, 68589, 31241, 11946, 24566, 11651, 12251];
+    const avgViews = [17950, 28054, 68589, 31241, 11946, 24567, 11651, 12251];
     const uploads = [4, 11, 15, 26, 11, 10, 31, 21];
     if (labels.length === 0) {
       showNoData('chartYtMonthly', '유튜브 데이터 수집 중');
