@@ -768,7 +768,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card green">
     <div class="kpi-label">최근 30일 평균</div>
-    <div class="kpi-value">10,645</div>
+    <div class="kpi-value">10,647</div>
     <div class="kpi-sub neutral">18개 &middot; 주 4.2개</div>
   </div>
   <div class="kpi-card purple">
@@ -778,7 +778,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card" style="border-color:var(--red)">
     <div class="kpi-label">성장률</div>
-    <div class="kpi-value" style="color:var(--red)">↓ 29.7%</div>
+    <div class="kpi-value" style="color:var(--red)">↓ 29.6%</div>
     <div class="kpi-sub down">vs 이전 30일</div>
   </div>
 </div>
@@ -878,7 +878,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         </tr>
         <tr>
           <td><a href="https://youtube.com/watch?v=rgdfKjt_tZs" target="_blank" style="color:var(--accent2);text-decoration:none">올해 펑크 대학 예측! 3·4·5등급을 위한 신의 한수</a></td>
-          <td style="font-family:'Poppins';font-weight:600">173,512</td>
+          <td style="font-family:'Poppins';font-weight:600">173,513</td>
           <td>2.12%</td>
         </tr>
         <tr>
@@ -901,7 +901,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <tr>
           <td style="color:var(--text)">2026-05-20</td>
           <td><a href="https://youtube.com/watch?v=zeK8eelo8WQ" target="_blank" style="color:var(--accent2);text-decoration:none">성적이 좋아도 SKY 못 가는 이유｜서울대 교수가 말하는 SKY 합격 필수 조건</a></td>
-          <td style="font-family:'Poppins';font-weight:600">7,219</td>
+          <td style="font-family:'Poppins';font-weight:600">7,235</td>
           <td>70</td>
           <td>1.12%</td>
         </tr>
@@ -2661,31 +2661,78 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 </div>
 
 <!-- === 서울 6/13 입시설명회 === -->
-<div style="display:flex;align-items:center;gap:8px;margin:32px 0 16px;padding-top:24px;border-top:1px solid var(--border)">
-  <div style="font-size:16px;font-weight:700;color:var(--cyan)">🎤 서울 6/13 입시설명회</div>
-  <div style="font-size:12px;color:var(--text3)">SETEC 1층 컨벤션홀 · 토 오후 3시</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:32px 0 16px;padding-top:24px;border-top:1px solid var(--border)">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="font-size:16px;font-weight:700;color:var(--cyan)">🎤 서울 6/13 입시설명회</div>
+    <div style="font-size:12px;color:var(--text3)">SETEC 1층 컨벤션홀 · 토 오후 3시</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;background:rgba(255,193,7,0.15);border:1px solid rgba(255,193,7,0.40);font-size:12px;font-weight:800;color:var(--yellow)">
+    <span>D-22</span>
+    <span style="color:var(--text3);font-weight:600">· 22일 남음</span>
+  </div>
+</div>
+
+<!-- 목표 진행률 막대 -->
+<div class="card" style="margin-bottom:16px;padding:18px 20px">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+    <div style="font-size:13px;font-weight:700;color:var(--text2)">📊 목표 진행률</div>
+    <div style="font-size:11px;color:var(--text3)">총 등록 인원 = 신청자 + 동반</div>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
+    <div style="font-family:'Poppins';font-size:28px;font-weight:800;color:var(--cyan)">88</div>
+    <div style="font-size:14px;color:var(--text3)">/ 450명</div>
+    <div style="margin-left:auto;font-size:14px;font-weight:800;color:var(--accent2)">19.6%</div>
+  </div>
+  <div style="height:14px;background:rgba(255,255,255,0.06);border-radius:7px;overflow:hidden;border:1px solid var(--border)">
+    <div style="height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:7px;width:19.6%"></div>
+  </div>
+  <div style="font-size:11px;color:var(--text3);margin-top:8px">남은 모집: <b style="color:var(--text2)">362명</b> · 일 평균 필요: <b style="color:var(--text2)">16명/일</b></div>
 </div>
 
 <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
   <div class="kpi-card cyan">
     <div class="kpi-label">총 신청자</div>
-    <div class="kpi-value">40명</div>
+    <div class="kpi-value">43명</div>
     <div class="kpi-sub neutral">학부모 신청</div>
   </div>
   <div class="kpi-card green">
-    <div class="kpi-label">예상 참석</div>
-    <div class="kpi-value">82명</div>
-    <div class="kpi-sub neutral">동반 +42명 포함</div>
-  </div>
-  <div class="kpi-card blue">
-    <div class="kpi-label">고1 비중</div>
-    <div class="kpi-value">24명</div>
-    <div class="kpi-sub neutral">60% · 핵심 타겟</div>
+    <div class="kpi-label">총 등록 인원</div>
+    <div class="kpi-value">88명</div>
+    <div class="kpi-sub neutral">동반 +45명 포함</div>
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
+    <div class="kpi-label">실참석 예상 <span style="font-size:10px;font-weight:600;color:var(--text3)">(노쇼 40% 반영)</span></div>
+    <div class="kpi-value">53명</div>
+    <div class="kpi-sub neutral">좌석 채움률 17.7% / 300석</div>
+  </div>
+  <div class="kpi-card blue">
+    <div class="kpi-label">목표 달성 시 실참석</div>
+    <div class="kpi-value">270명</div>
+    <div class="kpi-sub neutral">450명 등록 × 60% 참석률</div>
+  </div>
+</div>
+
+<!-- 학년·계열 분포 KPI (2열) -->
+<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
+  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
+    <div class="kpi-label">고1 비중 (핵심 타겟)</div>
+    <div class="kpi-value">24명</div>
+    <div class="kpi-sub neutral">56%</div>
+  </div>
+  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
     <div class="kpi-label">자연계열</div>
-    <div class="kpi-value">21명</div>
-    <div class="kpi-sub neutral">52%</div>
+    <div class="kpi-value">22명</div>
+    <div class="kpi-sub neutral">51%</div>
+  </div>
+  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
+    <div class="kpi-label">인문계열</div>
+    <div class="kpi-value">11명</div>
+    <div class="kpi-sub neutral">26%</div>
+  </div>
+  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
+    <div class="kpi-label">메디컬</div>
+    <div class="kpi-value">5명</div>
+    <div class="kpi-sub neutral">12%</div>
   </div>
 </div>
 
@@ -2699,18 +2746,18 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
         <div class="ch-bar-row">
           <div class="ch-bar-label">💬 카카오 오픈톡</div>
           <div class="ch-bar-track"><div class="ch-bar-fill" style="width:100.0%"></div></div>
-          <div class="ch-bar-value">35건 · 87.5%</div>
+          <div class="ch-bar-value">37건 · 86.0%</div>
         </div>
         <div class="ch-bar-row">
           <div class="ch-bar-label">🎬 유튜브</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:14.3%"></div></div>
-          <div class="ch-bar-value">5건 · 12.5%</div>
+          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:16.2%"></div></div>
+          <div class="ch-bar-value">6건 · 14.0%</div>
         </div></div>
   </div>
   <div class="card">
     <div class="card-header">
       <div class="card-title">학년 분포</div>
-      <div class="card-badge consulting">40건</div>
+      <div class="card-badge consulting">43건</div>
     </div>
     <div class="chart-container"><canvas id="chartSeoulGrade"></canvas></div>
   </div>
@@ -2724,7 +2771,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   
     <table class="data-table">
       <thead><tr><th>신청 시각</th><th>학생명</th><th>학년</th><th>계열</th><th>지역/학교</th><th>유입 채널</th></tr></thead>
-      <tbody><tr><td>2026-05-22 00:41</td><td><strong>송지숙</strong></td><td>중3</td><td>자연(이과)</td><td>서울/숙명여중</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-05-22 00:36</td><td><strong>송선혜</strong></td><td>고1</td><td>자연(이과)</td><td>분당 대진고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:35</td><td><strong>김경아</strong></td><td>고2</td><td>자연(이과)</td><td>서울/무학여고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:29</td><td><strong>김영주</strong></td><td>고2</td><td>자연(이과)</td><td>천안/북일고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:28</td><td><strong>임영아</strong></td><td>고1</td><td>인문(문과)</td><td>안양/안양외고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:23</td><td><strong>손정은</strong></td><td>고2</td><td>자연(이과)</td><td>서울 / 명덕고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:14</td><td><strong>김해진</strong></td><td>고1</td><td>메디컬(의치한약수)</td><td>아산/배방고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:12</td><td><strong>임현주</strong></td><td>고3</td><td>인문(문과)</td><td>서울/잠실여고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:08</td><td><strong>김미향</strong></td><td>고1</td><td>미정</td><td>파주 동패고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:02</td><td><strong>신승헌</strong></td><td>고1</td><td>인문(문과)</td><td>서울/성보고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-21 23:54</td><td><strong>이정현</strong></td><td>고1</td><td>자연(이과)</td><td>서울/배명고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-21 23:53</td><td><strong>최명숙</strong></td><td>고1</td><td>인문(문과)</td><td>서울/배명고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr></tbody>
+      <tbody><tr><td>2026-05-22 00:46</td><td><strong>김애경</strong></td><td>N수</td><td>미정</td><td>양주/옥정고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:45</td><td><strong>김주연</strong></td><td>중3</td><td>메디컬(의치한약수)</td><td>경기 / 위례중</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:43</td><td><strong>김민아</strong></td><td>중3</td><td>자연(이과)</td><td>거원중</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-05-22 00:41</td><td><strong>송지숙</strong></td><td>중3</td><td>자연(이과)</td><td>서울/숙명여중</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-05-22 00:36</td><td><strong>송선혜</strong></td><td>고1</td><td>자연(이과)</td><td>분당 대진고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:35</td><td><strong>김경아</strong></td><td>고2</td><td>자연(이과)</td><td>서울/무학여고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:29</td><td><strong>김영주</strong></td><td>고2</td><td>자연(이과)</td><td>천안/북일고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:28</td><td><strong>임영아</strong></td><td>고1</td><td>인문(문과)</td><td>안양/안양외고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:23</td><td><strong>손정은</strong></td><td>고2</td><td>자연(이과)</td><td>서울 / 명덕고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:14</td><td><strong>김해진</strong></td><td>고1</td><td>메디컬(의치한약수)</td><td>아산/배방고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:12</td><td><strong>임현주</strong></td><td>고3</td><td>인문(문과)</td><td>서울/잠실여고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-05-22 00:08</td><td><strong>김미향</strong></td><td>고1</td><td>미정</td><td>파주 동패고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr></tbody>
     </table>
 </div>
 
@@ -3085,7 +3132,7 @@ function showNoData(canvasId, msg) {
 // ---- Seoul Event Grade Chart ----
 (function() {
   const labels = ["\uace01", "\uace02", "\uace03", "\uc9113", "N\uc218"];
-  const values = [24, 8, 5, 2, 1];
+  const values = [24, 8, 5, 4, 2];
   const canvas = document.getElementById('chartSeoulGrade');
   if (!canvas) return;
   if (labels.length === 0) {
@@ -3336,7 +3383,7 @@ function renderMediaCharts() {
   const ctx1 = document.getElementById('chartYtMonthly');
   if (ctx1 && !ctx1._chart) {
     const labels = ["2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"];
-    const avgViews = [28408, 68654, 31292, 12255, 24846, 12347, 13084, 12822];
+    const avgViews = [28408, 68654, 31292, 12255, 24847, 12344, 13084, 12824];
     const uploads = [11, 15, 26, 11, 10, 31, 22, 11];
     if (labels.length === 0) {
       showNoData('chartYtMonthly', '유튜브 데이터 수집 중');
