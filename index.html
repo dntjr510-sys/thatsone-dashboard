@@ -699,23 +699,60 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
 </div>
 
-<!-- 채널별 유입 → 리드 기여 (GA4) -->
+<!-- 트랙별 신청 (Tally · 가격대) -->
+<div class="section-grid" style="grid-template-columns:repeat(4,1fr)">
+  
+    <div class="card" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:700;color:#10eeff">입시설명회</span>
+        <span style="font-size:9px;padding:2px 7px;background:#10eeff22;color:#10eeff;border-radius:4px">무료</span>
+      </div>
+      <div style="font-size:28px;font-weight:800;color:var(--text)">264<span style="font-size:13px;color:var(--text3);font-weight:500">건</span></div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">잠재매출 <b style="color:#10eeff">잠재</b></div>
+    </div>
+    <div class="card" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:700;color:#d4a017">컨설팅</span>
+        <span style="font-size:9px;padding:2px 7px;background:#d4a01722;color:#d4a017;border-radius:4px">60만/상담</span>
+      </div>
+      <div style="font-size:28px;font-weight:800;color:var(--text)">39<span style="font-size:13px;color:var(--text3);font-weight:500">건</span></div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">잠재매출 <b style="color:#d4a017">2,340만</b></div>
+    </div>
+    <div class="card" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:700;color:#9b59b6">생기부 풀케어</span>
+        <span style="font-size:9px;padding:2px 7px;background:#9b59b622;color:#9b59b6;border-radius:4px">300만/6개월</span>
+      </div>
+      <div style="font-size:28px;font-weight:800;color:var(--text)">21<span style="font-size:13px;color:var(--text3);font-weight:500">건</span></div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">잠재매출 <b style="color:#9b59b6">6,300만</b></div>
+    </div>
+    <div class="card" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:13px;font-weight:700;color:#0191f1">스터디랩</span>
+        <span style="font-size:9px;padding:2px 7px;background:#0191f122;color:#0191f1;border-radius:4px">월 73만</span>
+      </div>
+      <div style="font-size:28px;font-weight:800;color:var(--text)">17<span style="font-size:13px;color:var(--text3);font-weight:500">건</span></div>
+      <div style="font-size:11px;color:var(--text2);margin-top:4px">잠재매출 <b style="color:#0191f1">1,241만</b></div>
+    </div>
+</div>
+
+<!-- 채널별 유입 → 고가 상담 리드 기여 (GA4) -->
 <div class="section-grid" style="grid-template-columns:1.35fr 1fr">
   <div class="card">
     <div class="card-header">
-      <div class="card-title">📥 채널별 유입 → 리드 기여 (30일)</div>
-      <div class="card-badge all">GA4 · firstUser</div>
+      <div class="card-title">📥 채널별 유입 → 고가 상담 리드 (30일)</div>
+      <div class="card-badge all">GA4 · firstUser · /thank-you</div>
     </div>
     <div class="chart-container" style="height:300px"><canvas id="chartChannelBar"></canvas></div>
   </div>
   <div class="card">
     <div class="card-header">
-      <div class="card-title">🎯 리드 기여 분포</div>
-      <div class="card-badge all">식별 130건</div>
+      <div class="card-title">🎯 상담 리드 채널 기여</div>
+      <div class="card-badge all">상담 73건</div>
     </div>
     <div class="chart-container" style="height:215px"><canvas id="chartChannelDonut"></canvas></div>
-    <div style="margin-top:10px;padding:10px 12px;background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;border-radius:6px;font-size:11px;color:var(--text2);line-height:1.55">
-      ⚠️ 전체 리드 613건 중 <b style="color:#f59e0b">475건이 'tally.so 폼경유'</b>로 원채널 추적 끊김. 위 분포는 추적 가능한 <b>130건</b> 기준. <br>→ GA4 추천제외에 tally.so 추가하면 근본 해결.
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(34,197,94,0.08);border-left:3px solid var(--green);border-radius:6px;font-size:11px;color:var(--text2);line-height:1.55">
+      ✅ 상담 트랙은 <code>/thank-you</code> 필터로 <b>tally 왜곡 거의 없음</b>(미상 5건). 막대 왼쪽축=전체세션, 오른쪽축=상담리드.<br>⚠️ 단 <b>입시설명회</b>(264건)는 thank-you2 <b>새 창</b> referrer로 채널추적 끊김 → tally↔thats1 cross-domain 설정 시 해결.
     </div>
   </div>
 </div>
@@ -3311,7 +3348,7 @@ function showNoData(canvasId, msg) {
 (function() {
   const labels = ["Google 광고", "유튜브", "네이버(검색/플레이스/카페)", "직접/미상", "검색/AI", "카카오", "전화 인바운드", "메타/인스타"];
   const sessions = [1348, 699, 559, 202, 167, 69, 58, 55];
-  const leads = [36, 30, 37, 8, 4, 10, 6, 6];
+  const leads = [13, 18, 19, 1, 4, 6, 6, 0];
   const canvas = document.getElementById('chartChannelBar');
   if (!canvas || labels.length === 0) { if(canvas) showNoData('chartChannelBar','채널 데이터 수집 중'); return; }
   new Chart(canvas, {
@@ -3331,9 +3368,9 @@ function showNoData(canvasId, msg) {
 
 // ---- Channel Donut (리드 기여 분포) ----
 (function() {
-  const labels = ["네이버(검색/플레이스/카페)", "Google 광고", "유튜브", "카카오", "메타/인스타", "전화 인바운드", "검색/AI", "기타"];
-  const values = [37, 36, 30, 10, 6, 6, 4, 1];
-  const colors = ["#03C75A", "#4285F4", "#FF0000", "#FAE100", "#E1306C", "#f59e0b", "#34A853", "#9ca3af"];
+  const labels = ["네이버(검색/플레이스/카페)", "유튜브", "Google 광고", "전화 인바운드", "카카오", "검색/AI", "기타"];
+  const values = [19, 18, 13, 6, 6, 4, 1];
+  const colors = ["#03C75A", "#FF0000", "#4285F4", "#f59e0b", "#FAE100", "#34A853", "#9ca3af"];
   const canvas = document.getElementById('chartChannelDonut');
   if (!canvas || labels.length === 0) { if(canvas) showNoData('chartChannelDonut','리드 데이터 수집 중'); return; }
   new Chart(canvas, {
