@@ -850,21 +850,68 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
 </div>
 
-<!-- Lead Breakdown -->
-<div class="section-grid">
+<!-- 홈페이지 전환 퍼널 -->
+<div class="section-grid" style="grid-template-columns:1.3fr 1fr">
   <div class="card">
     <div class="card-header">
-      <div class="card-title">리드 — 학년별</div>
-      <div class="card-badge all">Sheets</div>
+      <div class="card-title">🎯 홈페이지 전환 퍼널 (30일)</div>
+      <div class="card-badge all">GA4 funnel</div>
     </div>
-    <div class="chart-container"><canvas id="chartLeadGrade"></canvas></div>
+    <div style="padding:14px 4px 4px">
+      
+        <div style="margin-bottom:13px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px">
+            <span style="color:var(--text);font-weight:600">1. 세션 시작</span>
+            <span><b style="color:#0191f1">2,433</b>명 · <span style="color:var(--text3)">기준</span></span>
+          </div>
+          <div style="height:22px;background:var(--bg3);border-radius:5px;overflow:hidden">
+            <div style="height:100%;width:100.0%;background:#0191f1;border-radius:5px;transition:width .6s"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:13px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px">
+            <span style="color:var(--text);font-weight:600">2. 페이지 열람</span>
+            <span><b style="color:#10eeff">1,481</b>명 · <span style="color:var(--text3)">기준</span></span>
+          </div>
+          <div style="height:22px;background:var(--bg3);border-radius:5px;overflow:hidden">
+            <div style="height:100%;width:60.9%;background:#10eeff;border-radius:5px;transition:width .6s"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:13px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px">
+            <span style="color:var(--text);font-weight:600">3. 스크롤(관심)</span>
+            <span><b style="color:#00d68f">408</b>명 · <span style="color:var(--text3)">기준</span></span>
+          </div>
+          <div style="height:22px;background:var(--bg3);border-radius:5px;overflow:hidden">
+            <div style="height:100%;width:16.8%;background:#00d68f;border-radius:5px;transition:width .6s"></div>
+          </div>
+        </div>
+      <div style="margin-top:10px;padding:12px;background:rgba(0,214,143,0.08);border-left:3px solid var(--green);border-radius:6px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:12px;color:var(--text2)">최종 전환 (lead_complete)</span>
+        <span style="font-size:13px"><b style="color:var(--green);font-size:18px">355</b>건 · 세션대비 <b style="color:var(--green)">10.1%</b></span>
+      </div>
+      <div style="margin-top:6px;font-size:10px;color:var(--text3)">※ 스크롤까지 순차 정확 · 전환은 폼직행(설명회) 포함 실제 이벤트 기준</div>
+    </div>
   </div>
   <div class="card">
     <div class="card-header">
-      <div class="card-title">리드 — 상담 유형별</div>
-      <div class="card-badge all">Sheets</div>
+      <div class="card-title">💡 단계별 누수 진단 · 개선점</div>
+      <div class="card-badge all">Action</div>
     </div>
-    <div class="chart-container"><canvas id="chartConsultType"></canvas></div>
+    <div style="padding:8px 4px">
+      <div style="margin-bottom:10px;padding:11px;background:rgba(239,68,68,0.08);border-left:3px solid var(--red);border-radius:6px;font-size:12px;color:var(--text);line-height:1.6">
+        <b style="color:var(--red)">① 페이지→스크롤 -72.5% (최대 누수)</b><br>
+        <span style="color:var(--text2)">페이지는 봤는데 안 읽고 이탈 = 첫 화면에서 떠남. <b>Hero 카피·핵심 메시지·CTA를 상단</b>에. /49 컨설팅랜딩 집중 개선 시 효과 큼</span>
+      </div>
+      <div style="margin-bottom:10px;padding:11px;background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;border-radius:6px;font-size:12px;color:var(--text);line-height:1.6">
+        <b style="color:#f59e0b">② 세션→페이지 -39.1%</b><br>
+        <span style="color:var(--text2)">진입 직후 이탈 = 로딩 속도·기대 불일치 점검. 광고 소재 ↔ 랜딩 메시지 일치 확인</span>
+      </div>
+      <div style="padding:11px;background:rgba(0,214,143,0.08);border-left:3px solid var(--green);border-radius:6px;font-size:12px;color:var(--text);line-height:1.6">
+        <b style="color:var(--green)">③ 전환율 10.1%</b><br>
+        <span style="color:var(--text2)">교육업 기준 양호. 스크롤 도달자(408명) 대비 전환 끌어올릴 여지 — 폼 길이·신뢰요소(후기·실적) 보강</span>
+      </div>
+    </div>
   </div>
 </div>
 </div>
@@ -3409,30 +3456,6 @@ function showNoData(canvasId, msg) {
         x:{grid:{display:false}}
       }
     }
-  });
-})();
-
-// ---- Lead by Grade Chart ----
-(function() {
-  const labels = ["\uace01", "N\uc218", "\uace03", "\uace02", "\uc9113"];
-  const values = [6, 6, 3, 1, 1];
-  const canvas = document.getElementById('chartLeadGrade');
-  if (labels.length === 0) {
-    showNoData('chartLeadGrade', '리드 데이터 수집 중');
-    return;
-  }
-  new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: values,
-        backgroundColor: ['#00d68f','#0191f1','#10eeff','#ffc107','#7b61ff','#ff8c42'],
-        borderRadius: 4,
-        barThickness: 32,
-      }]
-    },
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:'#1f1f2f'}}}}
   });
 })();
 
