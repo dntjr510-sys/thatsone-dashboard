@@ -12,7 +12,7 @@
  * ⚠️ 반드시 <script>...</script> 태그로 감싸서 붙여넣기 (생략 시 코멘트가 본문에 노출됨)
  * (기존 v1/v2 스크립트는 제거하고 교체)
  *
- * 작성: 2026.04.20 / v3.1 (5/1 내부링크 비활성화) → v3.2 (5/1 인앱브라우저 자동감지)
+ * 작성: 2026.04.20 / v3.1 (5/1 내부링크 비활성화) → v3.2 (5/1 인앱브라우저 자동감지) → v3.3 (6/25 same-origin iframe 내부 tally 링크 주입)
  */
 
 (function() {
@@ -130,52 +130,79 @@
     return utm;
   }
 
-  // ── 3. Tally iframe src에 UTM 주입 ──
+  // ── 접근 가능한 모든 document 수집 (최상위 + same-origin iframe, 재귀) ──
+  // 아임웹이 본문을 same-origin iframe 안에 렌더하는 페이지(/71 수시랜딩 등) 대응 — v3.3
+  // cross-origin iframe(tally.so 임베드 본체 등)은 contentDocument 접근이 막혀 null → 안전하게 건너뜀
+  function collectDocs() {
+    var docs = [document];
+    function walk(doc) {
+      var frames;
+      try { frames = doc.querySelectorAll('iframe'); } catch (_) { return; }
+      for (var i = 0; i < frames.length; i++) {
+        var idoc = null;
+        try { idoc = frames[i].contentDocument; } catch (_) {} // cross-origin이면 예외/null
+        if (idoc && docs.indexOf(idoc) === -1) {
+          docs.push(idoc);
+          walk(idoc); // 중첩 iframe 대응
+        }
+      }
+    }
+    try { walk(document); } catch (_) {}
+    return docs;
+  }
+
+  // ── 3. Tally iframe src에 UTM 주입 (same-origin iframe 내부까지) ──
   function injectUtmToTallyIframes() {
     var utm = readUtmOnly();
     if (Object.keys(utm).length === 0) return;
 
-    var iframes = document.querySelectorAll('iframe[src*="tally.so"]');
-    iframes.forEach(function(iframe) {
-      try {
-        var url = new URL(iframe.src);
-        var changed = false;
-        Object.keys(utm).forEach(function(key) {
-          if (!url.searchParams.has(key)) {
-            url.searchParams.set(key, utm[key]);
-            changed = true;
+    collectDocs().forEach(function(doc) {
+      var iframes;
+      try { iframes = doc.querySelectorAll('iframe[src*="tally.so"]'); } catch (_) { return; }
+      iframes.forEach(function(iframe) {
+        try {
+          var url = new URL(iframe.src);
+          var changed = false;
+          Object.keys(utm).forEach(function(key) {
+            if (!url.searchParams.has(key)) {
+              url.searchParams.set(key, utm[key]);
+              changed = true;
+            }
+          });
+          if (changed) {
+            iframe.src = url.toString();
+            log('Iframe UTM injected:', iframe.src);
           }
-        });
-        if (changed) {
-          iframe.src = url.toString();
-          log('Iframe UTM injected:', iframe.src);
+        } catch (e) {
+          log('Iframe inject failed:', e);
         }
-      } catch (e) {
-        log('Iframe inject failed:', e);
-      }
+      });
     });
   }
 
-  // ── 4. Tally anchor 링크에도 UTM 부착 ──
+  // ── 4. Tally anchor 링크에도 UTM 부착 (same-origin iframe 내부까지) ──
   function injectUtmToTallyAnchors() {
     var utm = readUtmOnly();
     if (Object.keys(utm).length === 0) return;
 
-    var links = document.querySelectorAll('a[href*="tally.so"]');
-    links.forEach(function(link) {
-      try {
-        var url = new URL(link.href);
-        var changed = false;
-        Object.keys(utm).forEach(function(key) {
-          if (!url.searchParams.has(key)) {
-            url.searchParams.set(key, utm[key]);
-            changed = true;
+    collectDocs().forEach(function(doc) {
+      var links;
+      try { links = doc.querySelectorAll('a[href*="tally.so"]'); } catch (_) { return; }
+      links.forEach(function(link) {
+        try {
+          var url = new URL(link.href);
+          var changed = false;
+          Object.keys(utm).forEach(function(key) {
+            if (!url.searchParams.has(key)) {
+              url.searchParams.set(key, utm[key]);
+              changed = true;
+            }
+          });
+          if (changed) {
+            link.href = url.toString();
           }
-        });
-        if (changed) {
-          link.href = url.toString();
-        }
-      } catch (_) {}
+        } catch (_) {}
+      });
     });
   }
 
