@@ -13,6 +13,7 @@
  * (기존 v1/v2 스크립트는 제거하고 교체)
  *
  * 작성: 2026.04.20 / v3.1 (5/1 내부링크 비활성화) → v3.2 (5/1 인앱브라우저 자동감지) → v3.3 (6/25 same-origin iframe 내부 tally 링크 주입)
+ *       → v3.4 (11/2 폼별 전환: /thank-you 공용이라 정시·면접·윈터 구분 불가 → 누른 Tally 폼으로 판별해 GA4 lead_<폼>·구글애즈·메타 전환 발송)
  */
 
 (function() {
@@ -270,6 +271,10 @@
         return;
       }
 
+      // 임베드 폼은 여기서 폼별 전환까지 보낸다(완료 후 /thank-you로 안 넘어가는 경우 대비, 넘어가면 중복 차단)
+      rememberForm(formId, 'embed');
+      fireFormConversion(FORM_TRACKS[formId] || 'unknown', formId, 'embed');
+
       var stored = readStored();
       gtag('event', 'lead_complete', {
         event_category: 'lead',
@@ -289,12 +294,120 @@
     });
   }
 
+  // ── 7-1. 폼별 전환 (v3.4, 11/2) ──
+  // 판별 순서: /thank-you?form=<키> → 3시간 안에 누른 Tally 폼 → 3시간 안에 본 랜딩(/73·/74·/49·/71)
+  // /36은 스터디랩 상담·윈터 사전 접수가 함께 있어 경로만으로는 판별하지 않는다
+  var FORM_TRACKS = {
+    YjDKoJ: 'jungsi', BzvALN: 'interview', ODErrA: 'winter',
+    RGYOPQ: 'consulting', A7D4jo: 'studylab', vG0XYl: 'fullcare'
+  };
+  var PATH_TRACKS = { '/74': 'jungsi', '/73': 'interview', '/49': 'consulting', '/71': 'consulting' };
+  var ADS_SEND_TO = {
+    jungsi: 'AW-17160768812/uqsJCPK21rAdEKya8vY_',
+    interview: 'AW-17160768812/SLvACPW21rAdEKya8vY_',
+    winter: 'AW-17160768812/AiGnCPi21rAdEKya8vY_',
+    consulting: 'AW-17160768812/T3fECPu21rAdEKya8vY_',
+    studylab: 'AW-17160768812/TWOLCP621rAdEKya8vY_',
+    fullcare: 'AW-17160768812/c3TtCIG31rAdEKya8vY_'
+  };
+  var FORM_TTL = 3 * 60 * 60 * 1000;
+  var FIRE_DEDUP = 30 * 60 * 1000;
+
+  function tallyFormId(href) {
+    var m = /tally\.so\/(?:r|embed)\/([A-Za-z0-9]+)/.exec(href || '');
+    return m ? m[1] : '';
+  }
+
+  function rememberForm(formId, via) {
+    if (!formId) return;
+    try {
+      localStorage.setItem(STORAGE_PREFIX + 'form', JSON.stringify({ id: formId, via: via, t: Date.now(), path: location.pathname }));
+    } catch (_) {}
+    log('form remembered', formId, via);
+  }
+
+  function readJson(key) {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (_) { return null; }
+  }
+
+  // 신청 버튼(Tally 링크) 클릭 기억 — 최상위 + same-origin iframe 문서마다 1번씩 연결
+  function trackTallyClicks() {
+    collectDocs().forEach(function(doc) {
+      if (doc.__toneFormClick) return;
+      doc.__toneFormClick = true;
+      var handler = function(e) {
+        var a = e.target && e.target.closest && e.target.closest('a[href*="tally.so"]');
+        if (a) rememberForm(tallyFormId(a.href), 'click');
+      };
+      doc.addEventListener('click', handler, true);
+      doc.addEventListener('auxclick', handler, true);
+    });
+  }
+
+  function rememberPage() {
+    var track = PATH_TRACKS[location.pathname];
+    if (track) {
+      try { localStorage.setItem(STORAGE_PREFIX + 'form_page', JSON.stringify({ track: track, t: Date.now() })); } catch (_) {}
+    }
+  }
+
+  function fireFormConversion(track, formId, via) {
+    var firedKey = STORAGE_PREFIX + 'conv_' + track;
+    var last = Number(localStorage.getItem(firedKey) || 0);
+    if (Date.now() - last < FIRE_DEDUP) {
+      log('form conversion dedup', track);
+      return;
+    }
+    localStorage.setItem(firedKey, String(Date.now()));
+    var stored = readStored();
+    if (typeof gtag === 'function') {
+      gtag('event', 'lead_' + track, {
+        event_category: 'lead',
+        form_id: formId || 'unknown',
+        form_track: track,
+        form_via: via,
+        utm_source: stored.utm_source || '(direct)',
+        utm_medium: stored.utm_medium || '(none)',
+        utm_campaign: stored.utm_campaign || '',
+        landing: stored.landing || ''
+      });
+      if (ADS_SEND_TO[track]) {
+        gtag('event', 'conversion', { send_to: ADS_SEND_TO[track], transaction_id: track + '_' + Date.now() });
+      }
+    }
+    var sendFb = function() {
+      if (typeof fbq === 'function') fbq('trackCustom', 'lead_' + track, { form_id: formId || 'unknown', form_via: via });
+      return typeof fbq === 'function';
+    };
+    if (!sendFb()) setTimeout(sendFb, 3000);
+    log('form conversion fired', track, formId, via);
+  }
+
+  // /thank-you(상담 공용) 진입 시 폼 판별 → 폼별 전환. /thank-you2(설명회)는 제외
+  function trackThankYou() {
+    if (!/^\/thank-you\/?$/.test(location.pathname)) return;
+    var now = Date.now();
+    var track = '', formId = '', via = '';
+    var q = new URLSearchParams(location.search).get('form');
+    if (q && ADS_SEND_TO[q]) { track = q; via = 'param'; }
+    var f = readJson(STORAGE_PREFIX + 'form');
+    if (!track && f && now - f.t < FORM_TTL && FORM_TRACKS[f.id]) {
+      track = FORM_TRACKS[f.id]; formId = f.id; via = f.via;
+    }
+    var p = readJson(STORAGE_PREFIX + 'form_page');
+    if (!track && p && now - p.t < FORM_TTL) { track = p.track; via = 'page'; }
+    fireFormConversion(track || 'unknown', formId, via || 'none');
+    localStorage.removeItem(STORAGE_PREFIX + 'form');
+    localStorage.removeItem(STORAGE_PREFIX + 'form_page');
+  }
+
   // ── 8. 전체 실행 (디바운스 포함) ──
   var runTimer = null;
   function runAll() {
     injectUtmToTallyIframes();
     injectUtmToTallyAnchors();
     injectUtmToInternalLinks();
+    trackTallyClicks();
   }
   function runAllDebounced() {
     clearTimeout(runTimer);
@@ -303,9 +416,12 @@
 
   // 초기 실행
   captureEntry();
+  rememberPage();
   runAll();
   trackPhoneClicks();
   trackTallySubmission();
+  if (document.readyState === 'complete') setTimeout(trackThankYou, 800);
+  else window.addEventListener('load', function() { setTimeout(trackThankYou, 800); });
 
   // 지연 실행 (동적 콘텐츠 대비)
   setTimeout(runAll, 500);
