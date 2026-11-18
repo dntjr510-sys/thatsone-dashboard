@@ -1012,19 +1012,19 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     <div class="kpi-sub neutral">참여율 0.97%</div>
   </div>
   <div class="kpi-card green">
-    <div class="kpi-label">최근 30일 평균</div>
-    <div class="kpi-value">11,241</div>
-    <div class="kpi-sub neutral">56개 &middot; 주 13.0개</div>
+    <div class="kpi-label">30일 구독자 증가</div>
+    <div class="kpi-value">+10,625</div>
+    <div class="kpi-sub neutral">이전 30일 +8,175</div>
   </div>
   <div class="kpi-card purple">
-    <div class="kpi-label">이전 30일 평균</div>
-    <div class="kpi-value">24,090</div>
-    <div class="kpi-sub neutral">32개 업로드</div>
+    <div class="kpi-label">30일 조회수 증가</div>
+    <div class="kpi-value">+1,074,546</div>
+    <div class="kpi-sub neutral">이전 30일 +829,435 (+29.6%) &middot; 업로드 56개</div>
   </div>
-  <div class="kpi-card" style="border-color:var(--red)">
-    <div class="kpi-label">성장률</div>
-    <div class="kpi-value" style="color:var(--red)">↓ 53.3%</div>
-    <div class="kpi-sub down">vs 이전 30일</div>
+  <div class="kpi-card" style="border-color:var(--green)">
+    <div class="kpi-label">성장률 (구독자 증가)</div>
+    <div class="kpi-value" style="color:var(--green)">↑ 30.0%</div>
+    <div class="kpi-sub up">최근 30일 vs 이전 30일</div>
   </div>
 </div>
 
@@ -1050,20 +1050,20 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05)">
       <div style="text-align:center">
-        <div style="font-size:9px;color:var(--text3)">30일 누적 증가</div>
-        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--green)">+41,000</div>
-      </div>
-      <div style="text-align:center">
-        <div style="font-size:9px;color:var(--text3)">30일 평균</div>
-        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--accent)">+200<span style="font-size:9px;color:var(--text3)">/일</span></div>
+        <div style="font-size:9px;color:var(--text3)">최근 30일 평균</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--accent)">+354<span style="font-size:9px;color:var(--text3)">/일</span></div>
       </div>
       <div style="text-align:center">
         <div style="font-size:9px;color:var(--text3)">최근 7일 평균</div>
-        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--yellow)">+616<span style="font-size:9px;color:var(--text3)">/일</span></div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--yellow)">+600<span style="font-size:9px;color:var(--text3)">/일</span></div>
       </div>
       <div style="text-align:center">
-        <div style="font-size:9px;color:var(--text3)">10만 예상 달성</div>
-        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--red)">138일 후</div>
+        <div style="font-size:9px;color:var(--text3)">12/31 달성에 필요</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--green)">+642<span style="font-size:9px;color:var(--text3)">/일</span></div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:9px;color:var(--text3)">10만 예상 (최근 14일 속도 +464/일)</div>
+        <div style="font-family:'Poppins';font-size:15px;font-weight:700;color:var(--red)">60일 후 <span style="font-size:10px">(1/17)</span></div>
       </div>
     </div>
   </div>
@@ -1073,14 +1073,14 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   <div class="card">
     <div class="card-header">
       <div class="card-title">구독자 추이</div>
-      <div class="card-badge all">206일</div>
+      <div class="card-badge all">03-19~ · 기록 206일</div>
     </div>
     <div class="chart-container"><canvas id="chartYtSubscribers"></canvas></div>
   </div>
   <div class="card">
     <div class="card-header">
       <div class="card-title">월별 업로드 &amp; 평균 조회수</div>
-      <div class="card-badge all">YouTube</div>
+      <div class="card-badge all">업로드 월 기준 · 최근 달은 조회수 쌓이는 중</div>
     </div>
     <div class="chart-container"><canvas id="chartYtMonthly"></canvas></div>
   </div>
@@ -1467,7 +1467,13 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
     </div>
     <div style="padding:8px 4px 16px">
       
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+<div style="font-size:10px;color:var(--text3);margin-bottom:8px">기준 2026-11-18 · 최근 30일 · 도달·팔로워는 주 1회 갱신</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px">
+  <div style="padding:14px;background:var(--bg2);border-radius:12px;border:1px solid var(--line)">
+    <div style="font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.06em">팔로워 (메인)</div>
+    <div style="font-size:24px;font-weight:800;margin-top:4px;color:var(--text)">739</div>
+    <div style="font-size:10px;color:var(--green);margin-top:2px">30일 새 팔로우 +216</div>
+  </div>
   <div style="padding:14px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:12px;color:white">
     <div style="font-size:11px;opacity:0.85;font-weight:600;letter-spacing:0.06em">30일 도달 (합산)</div>
     <div style="font-size:24px;font-weight:800;margin-top:4px">108,642</div>
@@ -1490,11 +1496,11 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
   <div style="padding:10px 14px;background:var(--bg2);border-left:3px solid #fd1d1d;border-radius:6px">
     <div style="font-size:10px;color:var(--text3);font-weight:600;letter-spacing:0.04em">@thatsone_official (메인)</div>
-    <div style="font-size:13px;color:var(--text);margin-top:2px">도달 <strong>108,639</strong> · 프로필뷰 1789 · 클릭 263</div>
+    <div style="font-size:13px;color:var(--text);margin-top:2px">팔로워 <strong>739</strong> · 도달 <strong>108,639</strong> · 프로필뷰 1,789 · 클릭 263</div>
   </div>
   <div style="padding:10px 14px;background:var(--bg2);border-left:3px solid #833ab4;border-radius:6px">
     <div style="font-size:10px;color:var(--text3);font-weight:600;letter-spacing:0.04em">@thatsone_songdo (송도)</div>
-    <div style="font-size:13px;color:var(--text);margin-top:2px">도달 <strong>3</strong> · 프로필뷰 10 · <span style="color:var(--yellow)">⚠️ 게시물 0</span></div>
+    <div style="font-size:13px;color:var(--text);margin-top:2px">팔로워 <strong>10</strong> · 도달 <strong>3</strong> · 프로필뷰 10 · <span style="color:var(--yellow)">⚠️ 사실상 비활성</span></div>
   </div>
 </div>
       <div style="margin-bottom:10px;font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.04em">메인 계정 게시물 성과</div>
@@ -3982,8 +3988,8 @@ function renderMediaCharts() {
   // YouTube Subscribers
   const ctxSub = document.getElementById('chartYtSubscribers');
   if (ctxSub && !ctxSub._chart) {
-    const labels = ["03-19", "03-20", "03-21", "03-22", "03-23", "03-24", "03-25", "03-26", "03-27", "03-28", "03-29", "03-30", "03-31", "04-01", "04-02", "04-03", "04-04", "04-05", "04-06", "04-07", "04-08", "04-09", "04-10", "04-11", "04-12", "04-13", "04-14", "04-15", "04-16", "04-17", "04-18", "04-19", "04-20", "04-21", "04-22", "04-23", "04-24", "04-25", "04-26", "04-27", "04-28", "04-29", "04-30", "05-01", "05-02", "05-03", "05-04", "05-05", "05-06", "05-07", "05-09", "05-10", "05-11", "05-12", "05-13", "05-14", "05-15", "05-16", "05-17", "05-18", "05-19", "05-20", "05-21", "05-22", "05-23", "05-24", "05-25", "05-26", "05-27", "05-28", "05-29", "05-30", "05-31", "06-01", "06-02", "06-03", "06-04", "06-05", "06-06", "06-07", "06-08", "06-09", "06-10", "06-11", "06-12", "06-13", "06-14", "06-15", "06-16", "06-17", "06-18", "06-19", "06-20", "06-21", "06-22", "06-23", "06-24", "06-25", "06-26", "06-27", "06-28", "06-29", "06-30", "07-01", "07-02", "07-03", "07-04", "07-05", "07-06", "07-07", "07-08", "07-09", "07-10", "07-11", "07-12", "07-13", "07-14", "07-15", "07-16", "07-17", "07-18", "07-19", "07-20", "07-21", "07-22", "07-23", "07-24", "07-26", "07-27", "07-28", "07-29", "07-30", "07-31", "08-01", "08-02", "08-03", "08-04", "08-05", "08-06", "08-07", "08-08", "08-09", "08-10", "08-11", "08-12", "08-13", "08-14", "08-15", "08-16", "08-17", "08-18", "08-19", "08-20", "08-22", "08-23", "08-24", "08-25", "08-26", "08-27", "08-29", "08-30", "08-31", "09-01", "09-02", "09-03", "09-04", "09-05", "09-06", "09-08", "09-09", "09-10", "09-11", "09-18", "09-19", "09-22", "09-28", "09-29", "10-02", "10-04", "10-05", "10-08", "10-12", "10-20", "10-22", "10-24", "10-25", "10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-04", "11-05", "11-06", "11-07", "11-08", "11-10", "11-11", "11-12", "11-13", "11-14", "11-15", "11-16", "11-17", "11-18"];
-    const values = [31400, 31500, 31500, 31600, 31700, 31700, 31900, 32100, 32400, 32600, 32800, 32900, 33000, 33100, 33200, 33200, 33400, 33700, 33900, 34200, 34300, 34500, 34600, 34800, 34900, 35100, 35400, 35500, 35600, 35700, 35700, 35800, 35800, 35900, 35900, 35900, 36000, 36000, 36000, 36100, 36100, 36100, 36100, 36100, 36200, 36200, 36200, 36200, 36300, 36300, 36500, 36600, 36700, 36700, 36800, 36900, 36900, 36900, 36900, 36900, 37000, 37000, 37100, 37100, 37100, 37100, 37200, 37300, 37300, 37400, 37400, 37400, 37500, 37500, 37600, 37600, 37600, 37600, 37600, 37700, 37700, 37700, 37700, 37800, 37800, 37800, 37900, 37900, 37900, 37900, 38000, 38000, 38000, 38000, 38100, 38100, 38100, 38100, 38200, 38200, 38300, 38300, 38400, 38500, 38500, 38600, 38600, 38600, 38700, 38700, 38800, 38800, 38800, 38900, 38900, 38900, 39000, 39000, 39600, 40000, 40500, 40900, 41100, 41400, 41600, 41600, 41900, 42100, 42300, 42500, 42600, 42700, 42800, 42900, 43000, 43200, 43300, 43400, 43600, 43700, 43800, 43900, 44000, 44600, 44900, 45100, 45400, 45600, 45900, 46200, 46400, 46600, 46800, 47100, 47300, 47600, 47800, 48000, 48100, 48500, 48700, 49100, 49600, 49800, 50000, 50300, 50400, 50600, 51300, 51600, 51800, 52000, 53300, 53600, 54200, 55200, 55600, 56400, 57000, 57400, 58500, 59500, 62100, 62600, 63200, 63500, 64500, 64600, 64700, 64700, 65000, 65400, 65900, 66100, 66300, 66300, 66500, 67400, 68200, 68700, 69300, 69900, 70100, 70700, 71800, 72400];
+    const labels = ["03-19", "03-20", "03-21", "03-22", "03-23", "03-24", "03-25", "03-26", "03-27", "03-28", "03-29", "03-30", "03-31", "04-01", "04-02", "04-03", "04-04", "04-05", "04-06", "04-07", "04-08", "04-09", "04-10", "04-11", "04-12", "04-13", "04-14", "04-15", "04-16", "04-17", "04-18", "04-19", "04-20", "04-21", "04-22", "04-23", "04-24", "04-25", "04-26", "04-27", "04-28", "04-29", "04-30", "05-01", "05-02", "05-03", "05-04", "05-05", "05-06", "05-07", "05-08", "05-09", "05-10", "05-11", "05-12", "05-13", "05-14", "05-15", "05-16", "05-17", "05-18", "05-19", "05-20", "05-21", "05-22", "05-23", "05-24", "05-25", "05-26", "05-27", "05-28", "05-29", "05-30", "05-31", "06-01", "06-02", "06-03", "06-04", "06-05", "06-06", "06-07", "06-08", "06-09", "06-10", "06-11", "06-12", "06-13", "06-14", "06-15", "06-16", "06-17", "06-18", "06-19", "06-20", "06-21", "06-22", "06-23", "06-24", "06-25", "06-26", "06-27", "06-28", "06-29", "06-30", "07-01", "07-02", "07-03", "07-04", "07-05", "07-06", "07-07", "07-08", "07-09", "07-10", "07-11", "07-12", "07-13", "07-14", "07-15", "07-16", "07-17", "07-18", "07-19", "07-20", "07-21", "07-22", "07-23", "07-24", "07-25", "07-26", "07-27", "07-28", "07-29", "07-30", "07-31", "08-01", "08-02", "08-03", "08-04", "08-05", "08-06", "08-07", "08-08", "08-09", "08-10", "08-11", "08-12", "08-13", "08-14", "08-15", "08-16", "08-17", "08-18", "08-19", "08-20", "08-21", "08-22", "08-23", "08-24", "08-25", "08-26", "08-27", "08-28", "08-29", "08-30", "08-31", "09-01", "09-02", "09-03", "09-04", "09-05", "09-06", "09-07", "09-08", "09-09", "09-10", "09-11", "09-12", "09-13", "09-14", "09-15", "09-16", "09-17", "09-18", "09-19", "09-20", "09-21", "09-22", "09-23", "09-24", "09-25", "09-26", "09-27", "09-28", "09-29", "09-30", "10-01", "10-02", "10-03", "10-04", "10-05", "10-06", "10-07", "10-08", "10-09", "10-10", "10-11", "10-12", "10-13", "10-14", "10-15", "10-16", "10-17", "10-18", "10-19", "10-20", "10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-04", "11-05", "11-06", "11-07", "11-08", "11-09", "11-10", "11-11", "11-12", "11-13", "11-14", "11-15", "11-16", "11-17", "11-18"];
+    const values = [31400, 31500, 31500, 31600, 31700, 31700, 31900, 32100, 32400, 32600, 32800, 32900, 33000, 33100, 33200, 33200, 33400, 33700, 33900, 34200, 34300, 34500, 34600, 34800, 34900, 35100, 35400, 35500, 35600, 35700, 35700, 35800, 35800, 35900, 35900, 35900, 36000, 36000, 36000, 36100, 36100, 36100, 36100, 36100, 36200, 36200, 36200, 36200, 36300, 36300, null, 36500, 36600, 36700, 36700, 36800, 36900, 36900, 36900, 36900, 36900, 37000, 37000, 37100, 37100, 37100, 37100, 37200, 37300, 37300, 37400, 37400, 37400, 37500, 37500, 37600, 37600, 37600, 37600, 37600, 37700, 37700, 37700, 37700, 37800, 37800, 37800, 37900, 37900, 37900, 37900, 38000, 38000, 38000, 38000, 38100, 38100, 38100, 38100, 38200, 38200, 38300, 38300, 38400, 38500, 38500, 38600, 38600, 38600, 38700, 38700, 38800, 38800, 38800, 38900, 38900, 38900, 39000, 39000, 39600, 40000, 40500, 40900, 41100, 41400, 41600, 41600, 41900, null, 42100, 42300, 42500, 42600, 42700, 42800, 42900, 43000, 43200, 43300, 43400, 43600, 43700, 43800, 43900, 44000, 44600, 44900, 45100, 45400, 45600, 45900, 46200, 46400, 46600, 46800, null, 47100, 47300, 47600, 47800, 48000, 48100, null, 48500, 48700, 49100, 49600, 49800, 50000, 50300, 50400, 50600, null, 51300, 51600, 51800, 52000, null, null, null, null, null, null, 53300, 53600, null, null, 54200, null, null, null, null, null, 55200, 55600, null, null, 56400, null, 57000, 57400, null, null, 58500, null, null, null, 59500, null, null, null, null, null, null, null, 62100, null, 62600, null, 63200, 63500, null, null, 64500, 64600, 64700, 64700, 65000, 65400, null, 65900, 66100, 66300, 66300, 66500, null, 67400, 68200, 68700, 69300, 69900, 70100, 70700, 71800, 72400];
     if (labels.length === 0) {
       showNoData('chartYtSubscribers', '구독자 추이 데이터 수집 중 (매일 리프레시 시 축적)');
     } else {
@@ -3998,7 +4004,9 @@ function renderMediaCharts() {
             backgroundColor: 'rgba(255,77,106,0.15)',
             fill: true,
             tension: 0.3,
-            pointRadius: 3,
+            spanGaps: true,
+            pointRadius: 0,
+            pointHoverRadius: 4,
             pointBackgroundColor: '#ff4d6a'
           }]
         },
