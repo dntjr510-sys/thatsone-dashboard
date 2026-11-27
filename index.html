@@ -2831,19 +2831,19 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
 <!-- 신규 리드 요약 -->
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
   <div style="font-size:16px;font-weight:700;color:var(--green)">📥 신규 리드 현황</div>
-  <div style="font-size:12px;color:var(--text3)">Tally + 옛 구글폼 통합</div>
+  <div style="font-size:12px;color:var(--text3)">정시·면접 상담관리 탭 + Tally + 옛 구글폼 · 중복 제외</div>
 </div>
 
-<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
+<div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:16px">
   <div class="kpi-card green">
     <div class="kpi-label">오늘 신규</div>
-    <div class="kpi-value">0건</div>
-    <div class="kpi-sub neutral">2026-11-27</div>
+    <div class="kpi-value">23건</div>
+    <div class="kpi-sub neutral">정시 23 · 면접 0 · 컨설팅·풀케어 0</div>
   </div>
   <div class="kpi-card cyan">
     <div class="kpi-label">이번 주 신규</div>
-    <div class="kpi-value">4건</div>
-    <div class="kpi-sub neutral">2026-11-23 ~</div>
+    <div class="kpi-value">262건</div>
+    <div class="kpi-sub neutral">정시 243 · 면접 15 · 컨설팅·풀케어 4 (11-23~)</div>
   </div>
   <div class="kpi-card blue">
     <div class="kpi-label">Tally 통합</div>
@@ -2852,15 +2852,63 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
   <div class="kpi-card" style="border-color:var(--yellow)">
     <div class="kpi-label">전체 누적</div>
-    <div class="kpi-value">2172건</div>
-    <div class="kpi-sub neutral">Tally + 구글폼 합산</div>
+    <div class="kpi-value">3369건</div>
+    <div class="kpi-sub neutral">정시 771 · 면접 426 · 폼 2172</div>
+  </div>
+</div>
+
+<!-- 정시·면접 신청 (11/27) — 상담관리 탭 기준 -->
+<div style="display:flex;align-items:center;gap:8px;margin:8px 0 16px;flex-wrap:wrap">
+  <div style="font-size:16px;font-weight:700;color:var(--cyan)">🎯 정시·면접 신청</div>
+  <div style="font-size:12px;color:var(--text3)">데스크 상담관리 탭 기준 · 11-27 13:15 수집 · '연락 전' = 상태가 정시 '신규' / 면접 빈칸</div>
+</div>
+
+<div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:16px">
+  <div class="kpi-card cyan">
+    <div class="kpi-label">정시 신청</div>
+    <div class="kpi-value">243건</div>
+    <div class="kpi-sub neutral">이번 주 · 오늘 23 · 누적 771</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--yellow)">
+    <div class="kpi-label">정시 연락 전</div>
+    <div class="kpi-value">160건</div>
+    <div class="kpi-sub neutral">누적의 21%</div>
+  </div>
+  <div class="kpi-card purple">
+    <div class="kpi-label">면접 신청</div>
+    <div class="kpi-value">15건</div>
+    <div class="kpi-sub neutral">이번 주 · 오늘 0 · 누적 426</div>
+  </div>
+  <div class="kpi-card" style="border-color:var(--yellow)">
+    <div class="kpi-label">면접 연락 전</div>
+    <div class="kpi-value">7건</div>
+    <div class="kpi-sub neutral">누적의 2%</div>
+  </div>
+</div>
+
+<div class="section-grid" style="margin-bottom:24px">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">최근 정시 신청</div>
+      <div class="card-badge consulting">최근 10건</div>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin:-4px 0 10px">이번 주 유입 · youtube / description 55 · naver / sa 52 · google / pmax 46 · 직접 유입 34 · naver / inapp 25</div>
+    <div style="overflow-x:auto"><table class="data-table" style="min-width:520px;white-space:nowrap"><thead><tr><th>일시</th><th>이름</th><th>학년</th><th>종류</th><th>유입</th><th>상태</th></tr></thead><tbody><tr><td>11-27 13:04</td><td style="color:var(--text)">정○민</td><td>N수</td><td style="font-size:11px">풀케어 정시 컨설팅</td><td style="font-size:11px">naver / sa</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 12:55</td><td style="color:var(--text)">배○민</td><td>N수</td><td style="font-size:11px">풀케어 정시 컨설팅</td><td style="font-size:11px">직접 유입</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 11:43</td><td style="color:var(--text)">김○석</td><td>N수</td><td style="font-size:11px">풀케어 정시 컨설팅</td><td style="font-size:11px">google / pmax</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 11:36</td><td style="color:var(--text)">김○윤</td><td>고3</td><td style="font-size:11px">파이널콜 정시 컨설팅</td><td style="font-size:11px">kakao / inapp</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 11:24</td><td style="color:var(--text)">임○현</td><td>N수</td><td style="font-size:11px">파이널콜 정시 컨설팅</td><td style="font-size:11px">naver / sa</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 11:20</td><td style="color:var(--text)">장○제</td><td>N수</td><td style="font-size:11px">파이널콜 정시 컨설팅</td><td style="font-size:11px">naver / sa</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 11:06</td><td style="color:var(--text)">조○우</td><td>N수</td><td style="font-size:11px">풀케어 정시 컨설팅</td><td style="font-size:11px">google / pmax</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 10:52</td><td style="color:var(--text)">유○완</td><td>고3</td><td style="font-size:11px">풀케어 정시 컨설팅</td><td style="font-size:11px">직접 유입</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 10:40</td><td style="color:var(--text)">박○범</td><td>N수</td><td style="font-size:11px">파이널콜 정시 컨설팅</td><td style="font-size:11px">naver / inapp</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr><tr><td>11-27 10:20</td><td style="color:var(--text)">최○윤</td><td>고3</td><td style="font-size:11px">파이널콜 정시 컨설팅</td><td style="font-size:11px">직접 유입</td><td style="font-size:11px;color:var(--yellow);font-weight:700">신규</td></tr></tbody></table></div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">최근 면접 신청</div>
+      <div class="card-badge consulting">최근 10건</div>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin:-4px 0 10px">이번 주 유입 · youtube / description 5 · naver / sa 3 · 직접 2 · cafe / post 1 · google / pmax2 1</div>
+    <div style="overflow-x:auto"><table class="data-table" style="min-width:520px;white-space:nowrap"><thead><tr><th>일시</th><th>이름</th><th>학년</th><th>종류</th><th>유입</th><th>상태</th></tr></thead><tbody><tr><td>11-26 17:48</td><td style="color:var(--text)">유○민</td><td>고3</td><td style="font-size:11px">제시문 면접 스파르타 파이널</td><td style="font-size:11px">youtube / description</td><td style="font-size:11px;color:var(--yellow);font-weight:700">(빈칸)</td></tr><tr><td>11-26 15:44</td><td style="color:var(--text)">최○은</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">cafe / post</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr><tr><td>11-26 13:56</td><td style="color:var(--text)">채○랑</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">직접</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr><tr><td>11-26 12:14</td><td style="color:var(--text)">박○이</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">youtube / description</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr><tr><td>11-26 11:50</td><td style="color:var(--text)">조○원</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">naver / sa</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr><tr><td>11-26 11:02</td><td style="color:var(--text)">이○후</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">직접</td><td style="font-size:11px;color:var(--text2);font-weight:700">미전환</td></tr><tr><td>11-25 00:19</td><td style="color:var(--text)">구○린</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">youtube / description</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr><tr><td>11-24 19:35</td><td style="color:var(--text)">이○현</td><td>N수</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">naver / sa</td><td style="font-size:11px;color:var(--text2);font-weight:700">미전환</td></tr><tr><td>11-23 22:12</td><td style="color:var(--text)">김○나</td><td>고3</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">google / pmax2</td><td style="font-size:11px;color:var(--text2);font-weight:700">상담완료</td></tr><tr><td>11-23 21:41</td><td style="color:var(--text)">정○규</td><td>N수</td><td style="font-size:11px">1:1 생기부 면접</td><td style="font-size:11px">youtube / description</td><td style="font-size:11px;color:var(--text2);font-weight:700">예약완료(결제O)</td></tr></tbody></table></div>
   </div>
 </div>
 
 <!-- 최근 신청 통합 테이블 -->
 <div class="card" style="margin-bottom:24px">
   <div class="card-header">
-    <div class="card-title">최근 신청 (전체 폼 통합)</div>
+    <div class="card-title">최근 신청 (컨설팅·풀케어 폼)</div>
     <div class="card-badge consulting">최근 15건</div>
   </div>
   
@@ -3286,155 +3334,7 @@ if(sessionStorage.getItem('dash_auth')==='1'){document.getElementById('lockScree
   </div>
 </div>
 
-<!-- === 서울 6/13 입시설명회 === -->
-<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin:32px 0 16px;padding-top:24px;border-top:1px solid var(--border)">
-  <div style="display:flex;align-items:center;gap:8px">
-    <div style="font-size:16px;font-weight:700;color:var(--cyan)">🎤 서울 6/13 입시설명회</div>
-    <div style="font-size:12px;color:var(--text3)">SETEC 1층 컨벤션홀 · 토 오후 3시</div>
-  </div>
-  <div style="display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;background:rgba(255,193,7,0.15);border:1px solid rgba(255,193,7,0.40);font-size:12px;font-weight:800;color:var(--yellow)">
-    <span>D+167</span>
-    <span style="color:var(--text3);font-weight:600">· -167일 남음</span>
-  </div>
-</div>
-
-<!-- 목표 진행률 막대 -->
-<div class="card" style="margin-bottom:16px;padding:18px 20px">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
-    <div style="font-size:13px;font-weight:700;color:var(--text2)">📊 목표 진행률</div>
-    <div style="font-size:11px;color:var(--text3)">총 등록 인원 = 신청자 + 동반</div>
-  </div>
-  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
-    <div style="font-family:'Poppins';font-size:28px;font-weight:800;color:var(--cyan)">494</div>
-    <div style="font-size:14px;color:var(--text3)">/ 450명</div>
-    <div style="margin-left:auto;font-size:14px;font-weight:800;color:var(--green)">109.8%</div>
-  </div>
-  <div style="height:14px;background:rgba(255,255,255,0.06);border-radius:7px;overflow:hidden;border:1px solid var(--border)">
-    <div style="height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:7px;width:100%"></div>
-  </div>
-  <div style="font-size:11px;color:var(--text3);margin-top:8px">남은 모집: <b style="color:var(--text2)">0명</b> · 일 평균 필요: <b style="color:var(--text2)">0명/일</b></div>
-</div>
-
-<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-  <div class="kpi-card cyan">
-    <div class="kpi-label">총 신청자</div>
-    <div class="kpi-value">299명</div>
-    <div class="kpi-sub neutral">학부모 신청</div>
-  </div>
-  <div class="kpi-card green">
-    <div class="kpi-label">총 등록 인원</div>
-    <div class="kpi-value">494명</div>
-    <div class="kpi-sub neutral">동반 +195명 포함</div>
-  </div>
-  <div class="kpi-card" style="border-color:var(--yellow)">
-    <div class="kpi-label">확정 참석 (문자 회신) <span style="font-size:10px;font-weight:600;color:var(--text3)">회신 188건 기준</span></div>
-    <div class="kpi-value">247명</div>
-    <div class="kpi-sub neutral">좌석 채움률 82.3% / 300석 · 확정 177건</div>
-  </div>
-  <div class="kpi-card blue">
-    <div class="kpi-label">회신 현황</div>
-    <div class="kpi-value">188건</div>
-    <div class="kpi-sub neutral">불참 11 · 미회신 111명</div>
-  </div>
-</div>
-
-<!-- 학년·계열 분포 KPI (2열) -->
-<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
-    <div class="kpi-label">고1 비중 (핵심 타겟)</div>
-    <div class="kpi-value">118명</div>
-    <div class="kpi-sub neutral">39%</div>
-  </div>
-  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
-    <div class="kpi-label">자연계열</div>
-    <div class="kpi-value">149명</div>
-    <div class="kpi-sub neutral">50%</div>
-  </div>
-  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
-    <div class="kpi-label">인문계열</div>
-    <div class="kpi-value">80명</div>
-    <div class="kpi-sub neutral">27%</div>
-  </div>
-  <div class="kpi-card" style="border-color:rgba(108,228,255,0.30)">
-    <div class="kpi-label">메디컬</div>
-    <div class="kpi-value">43명</div>
-    <div class="kpi-sub neutral">14%</div>
-  </div>
-</div>
-
-<div class="section-grid" style="grid-template-columns:1.4fr 1fr">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">유입 채널별 신청</div>
-      <div class="card-badge consulting">UTM 추적</div>
-    </div>
-    <div class="ch-bar-list">
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">🎬 유튜브</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:100.0%"></div></div>
-          <div class="ch-bar-value">141건 · 47.2%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">💬 카카오 오픈톡</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:46.8%"></div></div>
-          <div class="ch-bar-value">66건 · 22.1%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">📘 메타 광고</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:45.4%"></div></div>
-          <div class="ch-bar-value">64건 · 21.4%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">🏠 홈페이지 팝업</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:10.6%"></div></div>
-          <div class="ch-bar-value">15건 · 5.0%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">📱 QR 코드</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:5.7%"></div></div>
-          <div class="ch-bar-value">8건 · 2.7%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">🔗 직접 유입</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:1.4%"></div></div>
-          <div class="ch-bar-value">2건 · 0.7%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">.</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:0.7%"></div></div>
-          <div class="ch-bar-value">1건 · 0.3%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">..</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:0.7%"></div></div>
-          <div class="ch-bar-value">1건 · 0.3%</div>
-        </div>
-        <div class="ch-bar-row">
-          <div class="ch-bar-label">instagram</div>
-          <div class="ch-bar-track"><div class="ch-bar-fill" style="width:0.7%"></div></div>
-          <div class="ch-bar-value">1건 · 0.3%</div>
-        </div></div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">학년 분포</div>
-      <div class="card-badge consulting">299건</div>
-    </div>
-    <div class="chart-container"><canvas id="chartSeoulGrade"></canvas></div>
-  </div>
-</div>
-
-<div class="card" style="margin-top:16px">
-  <div class="card-header">
-    <div class="card-title">최근 신청자</div>
-    <div class="card-badge consulting">최근 12건</div>
-  </div>
-  
-    <table class="data-table">
-      <thead><tr><th>신청 시각</th><th>학생명</th><th>학년</th><th>계열</th><th>지역/학교</th><th>유입 채널</th></tr></thead>
-      <tbody><tr><td>2026-06-12 16:29</td><td><strong>이헤리</strong></td><td>고1</td><td>인문(문과)</td><td>서울/명덕외고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-06-12 16:17</td><td><strong>권병돈</strong></td><td>고1</td><td>자연(이과)</td><td>분당고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-06-12 16:08</td><td><strong>김민아</strong></td><td>고2</td><td>자연(이과)</td><td>천안 북일고</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-06-12 16:05</td><td><strong>서가영</strong></td><td>중3</td><td>인문(문과)</td><td>서울/목동중</td><td><span class="badge-channel">💬 카카오 오픈톡</span></td></tr><tr><td>2026-06-11 11:04</td><td><strong>장현아을</strong></td><td>고2</td><td>미정</td><td>서울/중산고</td><td><span class="badge-channel">🏠 홈페이지 팝업</span></td></tr><tr><td>2026-06-11 23:53</td><td><strong>김봉희</strong></td><td>고2</td><td>인문(문과)</td><td>서울 배재고</td><td><span class="badge-channel">📘 메타 광고</span></td></tr><tr><td>2026-06-11 19:49</td><td><strong>이수옥</strong></td><td>고1</td><td>메디컬(의치한약수)</td><td>경기/성복고</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-06-11 09:10</td><td><strong>김민희</strong></td><td>중3</td><td>메디컬(의치한약수)</td><td>대명중</td><td><span class="badge-channel">instagram</span></td></tr><tr><td>2026-06-11 09:01</td><td><strong>김지영</strong></td><td>고3</td><td>자연(이과)</td><td>분당/야탑고</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-06-10 17:08</td><td><strong>이지혜</strong></td><td>고1</td><td>자연(이과)</td><td>서울/금호고</td><td><span class="badge-channel">📘 메타 광고</span></td></tr><tr><td>2026-06-10 10:12</td><td><strong>지주희</strong></td><td>고3</td><td>인문(문과)</td><td>서울/경기고</td><td><span class="badge-channel">🎬 유튜브</span></td></tr><tr><td>2026-06-10 19:41</td><td><strong>윤선미</strong></td><td>고2</td><td>인문(문과)</td><td>서울</td><td><span class="badge-channel">📘 메타 광고</span></td></tr></tbody>
-    </table>
-</div>
+<!-- 서울 6/13 입시설명회 칸은 11/27 우석 요청으로 화면에서 뺌 (계산 코드·seoul_event 수집은 남겨 둠) -->
 
 
 <div class="section-grid" style="grid-template-columns:1fr;margin-top:16px">
